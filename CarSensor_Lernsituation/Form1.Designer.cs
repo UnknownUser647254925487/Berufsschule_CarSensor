@@ -39,10 +39,6 @@ namespace CarSensor_Lernsituation {
             this.panel1 = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.Sensor = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Time = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Speed = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Distance = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.SpeedBox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.input_left)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.input_middle)).BeginInit();
@@ -237,48 +233,18 @@ namespace CarSensor_Lernsituation {
             // 
             // dataGridView1
             // 
-            this.dataGridView1.AllowUserToAddRows = false;
             this.dataGridView1.AllowUserToDeleteRows = false;
             this.dataGridView1.AllowUserToOrderColumns = true;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.Sensor,
-            this.Time,
-            this.Speed,
-            this.Distance});
             this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dataGridView1.Location = new System.Drawing.Point(0, 189);
-            this.dataGridView1.Margin = new System.Windows.Forms.Padding(0, 0, 0, 0);
+            this.dataGridView1.Margin = new System.Windows.Forms.Padding(0);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.dataGridView1.Size = new System.Drawing.Size(726, 296);
             this.dataGridView1.TabIndex = 7;
             this.dataGridView1.Tag = "Display";
             this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
-            // 
-            // Sensor
-            // 
-            this.Sensor.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.Sensor.HeaderText = "Sensor";
-            this.Sensor.Name = "Sensor";
-            // 
-            // Time
-            // 
-            this.Time.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.Time.HeaderText = "Zeit";
-            this.Time.Name = "Time";
-            // 
-            // Speed
-            // 
-            this.Speed.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.Speed.HeaderText = "Geschwindigkeit in km/h";
-            this.Speed.Name = "Speed";
-            // 
-            // Distance
-            // 
-            this.Distance.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.Distance.HeaderText = "Abstand in m";
-            this.Distance.Name = "Distance";
             // 
             // Window
             // 
@@ -320,10 +286,6 @@ namespace CarSensor_Lernsituation {
         private Panel panel1;
         private Label label1;
         private DataGridView dataGridView1;
-        private DataGridViewTextBoxColumn Sensor;
-        private DataGridViewTextBoxColumn Time;
-        private DataGridViewTextBoxColumn Speed;
-        private DataGridViewTextBoxColumn Distance;
     }
 }
 

@@ -20,3 +20,14 @@ C:\Users\ich_i\Documents\Berufsschule\BfK-Software\Programme\CarSensor_Lernsitua
 C:\Users\ich_i\Documents\Berufsschule\BfK-Software\Programme\CarSensor_Lernsituation\CarSensor_Lernsituation\obj\Debug\CarSensor_Lernsituation.csproj.CoreCompileInputs.cache
 C:\Users\ich_i\Documents\Berufsschule\BfK-Software\Programme\CarSensor_Lernsituation\CarSensor_Lernsituation\obj\Debug\CarSensor_Lernsituation.exe
 C:\Users\ich_i\Documents\Berufsschule\BfK-Software\Programme\CarSensor_Lernsituation\CarSensor_Lernsituation\obj\Debug\CarSensor_Lernsituation.pdb
+C:\Users\Andreas\OneDrive\Dokumente\_Berufsschule\BfK-S\Berufsschule_CarSensor\CarSensor_Lernsituation\bin\Debug\CarSensor_Lernsituation.exe.config
+C:\Users\Andreas\OneDrive\Dokumente\_Berufsschule\BfK-S\Berufsschule_CarSensor\CarSensor_Lernsituation\bin\Debug\CarSensor_Lernsituation.exe
+C:\Users\Andreas\OneDrive\Dokumente\_Berufsschule\BfK-S\Berufsschule_CarSensor\CarSensor_Lernsituation\bin\Debug\CarSensor_Lernsituation.pdb
+C:\Users\Andreas\OneDrive\Dokumente\_Berufsschule\BfK-S\Berufsschule_CarSensor\CarSensor_Lernsituation\obj\Debug\CarSensor_Lernsituation.csproj.AssemblyReference.cache
+C:\Users\Andreas\OneDrive\Dokumente\_Berufsschule\BfK-S\Berufsschule_CarSensor\CarSensor_Lernsituation\obj\Debug\CarSensor_Lernsituation.csproj.SuggestedBindingRedirects.cache
+C:\Users\Andreas\OneDrive\Dokumente\_Berufsschule\BfK-S\Berufsschule_CarSensor\CarSensor_Lernsituation\obj\Debug\CarSensor_Lernsituation.Window.resources
+C:\Users\Andreas\OneDrive\Dokumente\_Berufsschule\BfK-S\Berufsschule_CarSensor\CarSensor_Lernsituation\obj\Debug\CarSensor_Lernsituation.Properties.Resources.resources
+C:\Users\Andreas\OneDrive\Dokumente\_Berufsschule\BfK-S\Berufsschule_CarSensor\CarSensor_Lernsituation\obj\Debug\CarSensor_Lernsituation.csproj.GenerateResource.cache
+C:\Users\Andreas\OneDrive\Dokumente\_Berufsschule\BfK-S\Berufsschule_CarSensor\CarSensor_Lernsituation\obj\Debug\CarSensor_Lernsituation.csproj.CoreCompileInputs.cache
+C:\Users\Andreas\OneDrive\Dokumente\_Berufsschule\BfK-S\Berufsschule_CarSensor\CarSensor_Lernsituation\obj\Debug\CarSensor_Lernsituation.exe
+C:\Users\Andreas\OneDrive\Dokumente\_Berufsschule\BfK-S\Berufsschule_CarSensor\CarSensor_Lernsituation\obj\Debug\CarSensor_Lernsituation.pdb

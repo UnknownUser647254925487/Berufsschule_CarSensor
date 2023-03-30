@@ -17,12 +17,13 @@ namespace CarSensor_Lernsituation {
         ArrayList fileData = new ArrayList();
 
 
-        //Code executed before UI is built
+        //Code executed 'before' UI is built
         private void readFile(String filePath) {
             StreamReader leseStream = new StreamReader(filePath);
             while (!leseStream.EndOfStream) {
                 fileData.Add(leseStream.ReadLine());
             }
+            leseStream.Close();
         }
   
 
@@ -70,6 +71,15 @@ namespace CarSensor_Lernsituation {
         }
         //Code that will be executed on button click
         string time, speed, distanceL, distanceM, distanceR;
+
+        private void chart1_Click(object sender, EventArgs e) {
+
+        }
+
+        private void flowLayoutPanel1_Paint(object sender, PaintEventArgs e) {
+
+        }
+
         string sensorL = "SL", sensorM = "SM", sensorR = "SR";
         private void submitButton_MouseClick(object sender, MouseEventArgs e) {
             StreamWriter StreamWriter = new StreamWriter(filePath);
