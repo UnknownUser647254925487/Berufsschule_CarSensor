@@ -1,6 +1,7 @@
 ﻿using System;
 using static Messwert;
 
+
 public class Messwert
 {
 	public enum Sensor {

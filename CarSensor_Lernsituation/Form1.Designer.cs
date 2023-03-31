@@ -98,6 +98,7 @@ namespace CarSensor_Lernsituation {
             this.SpeedBox.Tag = "SpeedBox";
             this.SpeedBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.SpeedBox.ThousandsSeparator = true;
+            this.SpeedBox.ValueChanged += new System.EventHandler(this.SpeedBox_ValueChanged);
             // 
             // input_left
             // 
