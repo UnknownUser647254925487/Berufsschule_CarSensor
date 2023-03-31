@@ -36,16 +36,22 @@ namespace CarSensor_Lernsituation {
             this.Label_Left = new System.Windows.Forms.Label();
             this.input_right = new System.Windows.Forms.NumericUpDown();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
+            this.refreshButton = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.MeasurmentList = new System.Windows.Forms.DataGridView();
+            this.TimeStamp = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.SpeedCol = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.SensorCol = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.DistanceCol = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.EnoughDistanceCol = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.SpeedBox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.input_left)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.input_middle)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.input_right)).BeginInit();
             this.tableLayoutPanel2.SuspendLayout();
             this.panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.MeasurmentList)).BeginInit();
             this.SuspendLayout();
             // 
             // dateTimePicker1
@@ -71,7 +77,6 @@ namespace CarSensor_Lernsituation {
             this.submitButton.Text = "Submit";
             this.submitButton.UseVisualStyleBackColor = true;
             this.submitButton.Click += new System.EventHandler(this.button1_Click);
-            this.submitButton.MouseClick += new System.Windows.Forms.MouseEventHandler(this.submitButton_MouseClick);
             // 
             // Label_Speed
             // 
@@ -197,6 +202,7 @@ namespace CarSensor_Lernsituation {
             this.tableLayoutPanel2.Controls.Add(this.Label_Right, 1, 1);
             this.tableLayoutPanel2.Controls.Add(this.SpeedBox, 2, 0);
             this.tableLayoutPanel2.Controls.Add(this.submitButton, 3, 0);
+            this.tableLayoutPanel2.Controls.Add(this.refreshButton, 3, 2);
             this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Top;
             this.tableLayoutPanel2.Location = new System.Drawing.Point(0, 57);
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
@@ -208,6 +214,17 @@ namespace CarSensor_Lernsituation {
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
             this.tableLayoutPanel2.Size = new System.Drawing.Size(726, 132);
             this.tableLayoutPanel2.TabIndex = 5;
+            // 
+            // refreshButton
+            // 
+            this.refreshButton.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.refreshButton.Location = new System.Drawing.Point(661, 69);
+            this.refreshButton.Name = "refreshButton";
+            this.refreshButton.Size = new System.Drawing.Size(60, 26);
+            this.refreshButton.TabIndex = 7;
+            this.refreshButton.Text = "Refresh";
+            this.refreshButton.UseVisualStyleBackColor = true;
+            this.refreshButton.Click += new System.EventHandler(this.button2_Click);
             // 
             // panel1
             // 
@@ -232,27 +249,67 @@ namespace CarSensor_Lernsituation {
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
-            // dataGridView1
+            // MeasurmentList
             // 
-            this.dataGridView1.AllowUserToDeleteRows = false;
-            this.dataGridView1.AllowUserToOrderColumns = true;
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dataGridView1.Location = new System.Drawing.Point(0, 189);
-            this.dataGridView1.Margin = new System.Windows.Forms.Padding(0);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.dataGridView1.Size = new System.Drawing.Size(726, 296);
-            this.dataGridView1.TabIndex = 7;
-            this.dataGridView1.Tag = "Display";
-            this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
+            this.MeasurmentList.AllowUserToDeleteRows = false;
+            this.MeasurmentList.AllowUserToOrderColumns = true;
+            this.MeasurmentList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.MeasurmentList.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.TimeStamp,
+            this.SpeedCol,
+            this.SensorCol,
+            this.DistanceCol,
+            this.EnoughDistanceCol});
+            this.MeasurmentList.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.MeasurmentList.Location = new System.Drawing.Point(0, 189);
+            this.MeasurmentList.Margin = new System.Windows.Forms.Padding(0);
+            this.MeasurmentList.Name = "MeasurmentList";
+            this.MeasurmentList.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.MeasurmentList.Size = new System.Drawing.Size(726, 296);
+            this.MeasurmentList.TabIndex = 7;
+            this.MeasurmentList.Tag = "Display";
+            // 
+            // TimeStamp
+            // 
+            this.TimeStamp.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.TimeStamp.HeaderText = "Messzeitpunk";
+            this.TimeStamp.Name = "TimeStamp";
+            this.TimeStamp.ReadOnly = true;
+            // 
+            // SpeedCol
+            // 
+            this.SpeedCol.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.SpeedCol.HeaderText = "Geschwindigkeit in km/h";
+            this.SpeedCol.Name = "SpeedCol";
+            this.SpeedCol.ReadOnly = true;
+            // 
+            // SensorCol
+            // 
+            this.SensorCol.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.SensorCol.HeaderText = "Sensor";
+            this.SensorCol.Name = "SensorCol";
+            this.SensorCol.ReadOnly = true;
+            // 
+            // DistanceCol
+            // 
+            this.DistanceCol.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.DistanceCol.HeaderText = "Distanz in m";
+            this.DistanceCol.Name = "DistanceCol";
+            this.DistanceCol.ReadOnly = true;
+            // 
+            // EnoughDistanceCol
+            // 
+            this.EnoughDistanceCol.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.EnoughDistanceCol.HeaderText = "Genug Abstand?";
+            this.EnoughDistanceCol.Name = "EnoughDistanceCol";
+            this.EnoughDistanceCol.ReadOnly = true;
             // 
             // Window
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(726, 485);
-            this.Controls.Add(this.dataGridView1);
+            this.Controls.Add(this.MeasurmentList);
             this.Controls.Add(this.tableLayoutPanel2);
             this.Controls.Add(this.panel1);
             this.Name = "Window";
@@ -266,7 +323,7 @@ namespace CarSensor_Lernsituation {
             this.tableLayoutPanel2.PerformLayout();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.MeasurmentList)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -286,7 +343,13 @@ namespace CarSensor_Lernsituation {
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
         private Panel panel1;
         private Label label1;
-        private DataGridView dataGridView1;
+        private DataGridView MeasurmentList;
+        private Button refreshButton;
+        private DataGridViewTextBoxColumn TimeStamp;
+        private DataGridViewTextBoxColumn SpeedCol;
+        private DataGridViewTextBoxColumn SensorCol;
+        private DataGridViewTextBoxColumn DistanceCol;
+        private DataGridViewTextBoxColumn EnoughDistanceCol;
     }
 }
 

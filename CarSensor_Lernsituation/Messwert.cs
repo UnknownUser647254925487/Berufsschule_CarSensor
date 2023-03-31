@@ -1,4 +1,8 @@
-﻿using System;
+﻿/*
+ * @author アンドレアス
+ * in group with Josia Happel & Jonas Hesse
+ */
+using System;
 using static Messwert;
 
 
@@ -13,6 +17,7 @@ public class Messwert
     private Sensor sensor1, sensor2, sensor3;
     private string time;
 
+    
     public Messwert(string time, double speed, Sensor sensor1, double distance) {
         this.time = time;
         this.speed = speed;
@@ -111,17 +116,45 @@ public class Messwert
             }
         }
     }
+    //Getter for all Variables
+    public double Speed {
+        get { return this.speed; }
+    }
+    public double DistanceL {
+        get { return this.distanceL; }
+    }
+    public double DistanceM {
+        get { return this.distanceM; }
+    }
+    public double DistanceR {
+        get { return this.distanceR; }
+    }
+
+    public Sensor Sensor1{
+        get { return this.sensor1; }
+    }
+    public Sensor Sensor2 {
+        get { return this.sensor2; }
+    }
+    public Sensor Sensor3 {
+        get { return this.sensor3; }
+    }
+
+    public String Time {
+        get { return this.time; }
+    }
+
 
     public String toString() {
         string s = "";
         if (this.distanceL != 0) {
-            s += $"{this.sensor1}; {this.time}; {this.speed}; {this.distanceL}\n";
+            s += $"{this.sensor1};{this.time};{this.speed};{this.distanceL};";
         }
         if (this.distanceM != 0) {
-            s += $"{this.sensor2}; {this.time}; {this.speed}; {this.distanceM}\n";
+            s += $"{this.sensor2};{this.distanceM};";
         }
         if (this.distanceR != 0) {
-            s += $"{this.sensor3}; {this.time}; {this.speed}; {this.distanceR}\n";
+            s += $"{this.sensor3};{this.distanceR};";
         }
         return s;
     }
