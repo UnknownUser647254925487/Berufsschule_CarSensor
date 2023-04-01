@@ -88,14 +88,29 @@ public class Messwert
     public String toString() {
         string s = "";
         if (this.distance1 != 0) {
-            s += $"{this.time};{this.speed};{this.sensor1};{this.distance1};";
+            s += $"{this.time};{this.speed};{SensorToString(this.sensor1)};{this.distance1}";
         }
         if (this.distance2 != 0) {
-            s += $"{this.sensor2};{this.distance2};";
+            s += $";{SensorToString(this.sensor2)};{this.distance2}";
         }
         if (this.distance3 != 0) {
-            s += $"{this.sensor3};{this.distance3};";
+            s += $";{SensorToString(this.sensor3)};{this.distance3}";
         }
         return s;
+    }
+
+    public String SensorToString(Sensor sensor) {
+        switch (sensor) {
+            case Sensor.sensorL:
+                return "SL";
+                
+             case Sensor.sensorM:
+                return "SM";
+                
+            case Sensor.sensorR:
+                return "SR";
+                
+        default: throw new Exception("Couldn't convert sensor to String");
+        }
     }
 }

@@ -15,7 +15,7 @@ namespace CarSensor_Lernsituation {
         Messwert.Sensor sensorL = Messwert.Sensor.sensorL, sensorM = Messwert.Sensor.sensorM, sensorR = Messwert.Sensor.sensorR;
         static string directory = Path.GetDirectoryName(Application.ExecutablePath);
         static string filePath = Path.Combine(directory, @"SensorData.txt");
-        static string testFilePath = $@"C:{dirSep}temp{dirSep}test.txt";
+        static string testFilePath = $@"C:\\temp\\test.txt";
         static readonly char dirSep = Path.DirectorySeparatorChar;
         List <Messwert> measuredData = new  List<Messwert>();
 
@@ -126,7 +126,7 @@ namespace CarSensor_Lernsituation {
         }
 
         private void button2_Click(object sender, EventArgs e) {
-            readFile(filePath);
+            readFile(testFilePath);
         }
 
 
@@ -146,11 +146,11 @@ namespace CarSensor_Lernsituation {
             speed = double.Parse(parts[1]);
             sens1 = sensorFromString(parts[2]);
             distance1 = double.Parse(parts[3]);
-            if (parts.Length > 3 && parts.Length <= 5) {
+            if (parts.Length > 4 && parts.Length <= 5) {
                 sens2 = sensorFromString(parts[4]);
                 distance2 = double.Parse(parts[5]);
                 lineMesswert = new Messwert(time, speed, sens1, distance1, sens2, distance2);
-            } else if (parts.Length > 5) {
+            } else if (parts.Length > 6) {
                 sens2 = sensorFromString(parts[4]);
                 distance2 = double.Parse(parts[5]);
                 sens3 = sensorFromString(parts[6]);
@@ -163,9 +163,9 @@ namespace CarSensor_Lernsituation {
         }
 
         public static Messwert.Sensor sensorFromString(string str){
-            if (str == "SL") { return Messwert.Sensor.sensorL; }
-            else if (str == "SM") { return Messwert.Sensor.sensorM; }
-            else if (str == "SR") { return Messwert.Sensor.sensorR; }
+            if (str.Equals("SL")) { return Messwert.Sensor.sensorL; }
+            else if (str.Equals("SM")) { return Messwert.Sensor.sensorM; }
+            else if (str.Equals("SR")) { return Messwert.Sensor.sensorR; }
             else {
                 throw new ArgumentException("Error on converting the sensor");
             }
