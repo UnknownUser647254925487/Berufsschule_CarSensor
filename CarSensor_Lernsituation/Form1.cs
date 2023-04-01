@@ -144,8 +144,8 @@ namespace CarSensor_Lernsituation {
             String[] parts = str.Split(';');
             time = parts[0];
             speed = double.Parse(parts[1]);
-            distance1 = double.Parse(parts[3]);
             sens1 = sensorFromString(parts[2]);
+            distance1 = double.Parse(parts[3]);
             if (parts.Length > 3 && parts.Length <= 5) {
                 sens2 = sensorFromString(parts[4]);
                 distance2 = double.Parse(parts[5]);
@@ -162,7 +162,7 @@ namespace CarSensor_Lernsituation {
             return lineMesswert;
         }
 
-        public static Messwert.Sensor sensorFromString(string str) {
+        public static Messwert.Sensor sensorFromString(string str){
             if (str == "SL") { return Messwert.Sensor.sensorL; }
             else if (str == "SM") { return Messwert.Sensor.sensorM; }
             else if (str == "SR") { return Messwert.Sensor.sensorR; }

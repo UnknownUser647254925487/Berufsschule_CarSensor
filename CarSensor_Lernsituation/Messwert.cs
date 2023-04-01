@@ -13,7 +13,7 @@ public class Messwert
 	}
 
 
-    private double speed, distanceL, distanceM, distanceR;
+    private double speed, distance1, distance2, distance3;
     private Sensor sensor1, sensor2, sensor3;
     private string time;
 
@@ -23,17 +23,7 @@ public class Messwert
         this.speed = speed;
         this.sensor1 = (Sensor)sensor1;
         if (distance > 0) {
-            switch (sensor1) {
-                case Sensor.sensorL:
-                    this.distanceL = distance;
-                    break;
-                case Sensor.sensorM:
-                    this.distanceM = distance;
-                    break;
-                case Sensor.sensorR:
-                    this.distanceR = distance;
-                    break;
-            }
+            this.distance1 = distance;
         }
     }
     public Messwert(string time, double speed, Sensor sensor1, double distance1, Sensor sensor2, double distance2) {
@@ -43,30 +33,10 @@ public class Messwert
         this.sensor2 = (Sensor)sensor2;
 
         if (distance1 > 0) {
-            switch (sensor1) {
-                case Sensor.sensorL:
-                    this.distanceL = distance1;
-                    break;
-                case Sensor.sensorM:
-                    this.distanceM = distance1;
-                    break;
-                case Sensor.sensorR:
-                    this.distanceR = distance1;
-                    break;
-            }
+            this.distance1 = distance1;
         }
         if (distance2 > 0) {
-            switch (sensor2) {
-                case Sensor.sensorL:
-                    this.distanceL = distance2;
-                    break;
-                case Sensor.sensorM:
-                    this.distanceM = distance2;
-                    break;
-                case Sensor.sensorR:
-                    this.distanceR = distance2;
-                    break;
-            }
+            this.distance2 = distance2;
         }
 
     }
@@ -77,43 +47,13 @@ public class Messwert
         this.sensor2 = (Sensor)sensor2;
         this.sensor3 = (Sensor)sensor3;
         if (distance1 > 0) {
-            switch (sensor1) {
-                case Sensor.sensorL:
-                    this.distanceL = distance1;
-                    break;
-                case Sensor.sensorM:
-                    this.distanceM = distance1;
-                    break;
-                case Sensor.sensorR:
-                    this.distanceR = distance1;
-                    break;
-            }
+            this.distance1 = distance1;
         }
         if (distance2 > 0) {
-            switch (sensor2) {
-                case Sensor.sensorL:
-                    this.distanceL = distance2;
-                    break;
-                case Sensor.sensorM:
-                    this.distanceM = distance2;
-                    break;
-                case Sensor.sensorR:
-                    this.distanceR = distance2;
-                    break;
-            }
+            this.distance2 = distance2;
         }
         if (distance3 > 0) {
-            switch (sensor3) {
-                case Sensor.sensorL:
-                    this.distanceL = distance3;
-                    break;
-                case Sensor.sensorM:
-                    this.distanceM = distance3;
-                    break;
-                case Sensor.sensorR:
-                    this.distanceR = distance3;
-                    break;
-            }
+            this.distance3 = distance3;
         }
     }
     //Getter for all Variables
@@ -121,13 +61,13 @@ public class Messwert
         get { return this.speed; }
     }
     public double DistanceL {
-        get { return this.distanceL; }
+        get { return this.distance1; }
     }
     public double DistanceM {
-        get { return this.distanceM; }
+        get { return this.distance2; }
     }
     public double DistanceR {
-        get { return this.distanceR; }
+        get { return this.distance3; }
     }
 
     public Sensor Sensor1{
@@ -147,14 +87,14 @@ public class Messwert
 
     public String toString() {
         string s = "";
-        if (this.distanceL != 0) {
-            s += $"{this.sensor1};{this.time};{this.speed};{this.distanceL};";
+        if (this.distance1 != 0) {
+            s += $"{this.time};{this.speed};{this.sensor1};{this.distance1};";
         }
-        if (this.distanceM != 0) {
-            s += $"{this.sensor2};{this.distanceM};";
+        if (this.distance2 != 0) {
+            s += $"{this.sensor2};{this.distance2};";
         }
-        if (this.distanceR != 0) {
-            s += $"{this.sensor3};{this.distanceR};";
+        if (this.distance3 != 0) {
+            s += $"{this.sensor3};{this.distance3};";
         }
         return s;
     }
