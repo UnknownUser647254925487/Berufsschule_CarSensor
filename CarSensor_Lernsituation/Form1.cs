@@ -16,7 +16,6 @@ namespace CarSensor_Lernsituation {
         static string directoryPath = Path.GetDirectoryName(Application.ExecutablePath);
         static string filePath = Path.Combine(directoryPath, @"\\SensorData.txt");
         static string testFilePath = $@"C:\\temp\\test.txt";
-        static readonly char dirSep = Path.DirectorySeparatorChar;
         List <Messwert> measuredData = new  List<Messwert>();
 
 
