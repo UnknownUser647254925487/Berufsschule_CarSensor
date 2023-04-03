@@ -41,7 +41,6 @@ namespace CarSensor_Lernsituation {
             this.panel1 = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
             this.MeasurmentList = new System.Windows.Forms.DataGridView();
-            this.messwertBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.timeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.speedDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.distanceLDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -51,6 +50,7 @@ namespace CarSensor_Lernsituation {
             this.sensor2DataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.sensor3DataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.EnoughDistanceCol = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.messwertBindingSource = new System.Windows.Forms.BindingSource(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.SpeedBox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.input_left)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.input_middle)).BeginInit();
@@ -64,7 +64,7 @@ namespace CarSensor_Lernsituation {
             // dateTimePicker1
             // 
             this.dateTimePicker1.AllowDrop = true;
-            this.dateTimePicker1.CustomFormat = "yyyy-MM-dd; HH:mm:ss";
+            this.dateTimePicker1.CustomFormat = "yyyy-MM-dd;HH:mm:ss";
             this.dateTimePicker1.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.dateTimePicker1.Location = new System.Drawing.Point(5, 5);
             this.dateTimePicker1.Name = "dateTimePicker1";
@@ -282,10 +282,6 @@ namespace CarSensor_Lernsituation {
             this.MeasurmentList.TabIndex = 7;
             this.MeasurmentList.Tag = "Display";
             // 
-            // messwertBindingSource
-            // 
-            this.messwertBindingSource.DataSource = typeof(Messwert);
-            // 
             // timeDataGridViewTextBoxColumn
             // 
             this.timeDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
@@ -356,6 +352,10 @@ namespace CarSensor_Lernsituation {
             this.EnoughDistanceCol.HeaderText = "Genug Abstand?";
             this.EnoughDistanceCol.Name = "EnoughDistanceCol";
             this.EnoughDistanceCol.ReadOnly = true;
+            // 
+            // messwertBindingSource
+            // 
+            this.messwertBindingSource.DataSource = typeof(Messwert);
             // 
             // Window
             // 
