@@ -22,7 +22,7 @@ namespace CarSensor_Lernsituation {
 
         //Code executed 'before' UI is built
         private void readFile(String filePath) {
-            StreamReader leseStream = new StreamReader(filePath);
+            StreamReader leseStream = new StreamReader(testFilePath);
             
             while (leseStream.Peek() > 0) {
                 String line = leseStream.ReadLine();
@@ -46,7 +46,7 @@ namespace CarSensor_Lernsituation {
 
 
         private void button1_Click(object sender, EventArgs e) {
-            StreamWriter StreamWriter = new StreamWriter(filePath);
+            StreamWriter StreamWriter = new StreamWriter(testFilePath, true);
 
             try {
                 //save & convert inputs of the UI elements
@@ -78,7 +78,7 @@ namespace CarSensor_Lernsituation {
                 //add new 'Object' to the List of already exiting ones
                 measuredData.Add(data);
                 //save data to file
-                StreamWriter.WriteLine(data.ToString(), true); //TODO: Test & Fix StreamWriter
+                StreamWriter.WriteLine(data.toString(), true); //TODO: Test & Fix StreamWriter
                 StreamWriter.Close();
             } catch (Exception exceptions) {
                 MessageBox.Show($"ooops, something went wrong processing your inputs{newLines(3)}{exceptions.Message}");
