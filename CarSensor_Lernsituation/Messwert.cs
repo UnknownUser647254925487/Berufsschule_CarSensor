@@ -18,6 +18,8 @@ public class Messwert
     private string time;
 
     
+    public Messwert() { }
+
     public Messwert(string time, double speed, Sensor sensor1, double distance) {
         this.time = time;
         this.speed = speed;

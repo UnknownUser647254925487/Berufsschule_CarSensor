@@ -9,25 +9,32 @@ using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using System.Windows.Forms;
+using System.Diagnostics;
+using System.Runtime.InteropServices;
 
 namespace CarSensor_Lernsituation {
     public partial class Window : Form {
         Messwert.Sensor sensorL = Messwert.Sensor.sensorL, sensorM = Messwert.Sensor.sensorM, sensorR = Messwert.Sensor.sensorR;
         static string directoryPath = Path.GetDirectoryName(Application.ExecutablePath);
-        static string filePath = Path.Combine(directoryPath, @"\\SensorData.txt");
-        static string testFilePath = $@"C:\\temp\\test.txt";
+        static string filePath = Path.Combine(directoryPath, @"SensorData.txt");
         List <Messwert> measuredData = new  List<Messwert>();
 
 
-        //Code executed 'before' UI is built
+        //Code to be executed 'before' UI is built
         private void readFile(String filePath) {
-            StreamReader leseStream = new StreamReader(testFilePath);
-            
+            StreamReader leseStream = new StreamReader(filePath);
+            Debug.Write("Reading:");
+            int i = 0;
             while (leseStream.Peek() > 0) {
                 String line = leseStream.ReadLine();
-                measuredData.Add(messwertFromString(line));
-                Console.WriteLine(line);
+                try {
+                    measuredData.Add(messwertFromString(line));
+                    i++;
+                }catch (Exception ex) {
+                    Debug.WriteLine(ex.ToString());
+                }
             }
+            Debug.WriteLine($"Read: {i} lines");
             leseStream.Close();
         }
 
@@ -38,12 +45,7 @@ namespace CarSensor_Lernsituation {
             MeasurmentList.DataSource = measuredData;
 
         }
-
-        private void main() {
-
-        }
-
-
+        //Submit-button
         private void button1_Click(object sender, EventArgs e) {
             time = dateTimePicker1.Text;
             speed = (double)SpeedBox.Value;
@@ -52,7 +54,7 @@ namespace CarSensor_Lernsituation {
             distanceR = (double)input_right.Value;
 
             //create new Messwert 'Object' (for better formatting and consitancy)
-            Messwert data;
+            Messwert data = new Messwert();
             if (distanceL > 0 && distanceM <= 0 && distanceR <= 0) {
                 data = new Messwert(time, speed, sensorL, distanceL);
             } else if (distanceL <= 0 && distanceM > 0 && distanceR <= 0) {
@@ -68,12 +70,15 @@ namespace CarSensor_Lernsituation {
             } else if (distanceL > 0 && distanceM > 0 && distanceR > 0) {
                 data = new Messwert(time, speed, sensorL, distanceL, sensorM, distanceM, sensorR, distanceR);
             } else {
-                throw new ArgumentOutOfRangeException("At least one distance has to be greater than 0");
+                MessageBox.Show($"Mindestends ein Sensor muss einen Abstand >0 haben!");
             }
-            safeToFile(testFilePath, data);
-            //add new 'Object' to the List of already exiting ones
-            measuredData.Add(data);
-
+            try {
+                safeToFile(filePath, data);
+                //add new 'Object' to the List of already exiting ones
+                measuredData.Add(data);
+            }catch (Exception ex) { 
+                Debug.WriteLine(ex);
+            }
         }
 
         private void dateTimePicker1_ValueChanged(object sender, EventArgs e) {
@@ -116,8 +121,12 @@ namespace CarSensor_Lernsituation {
 
         }
 
+        private void MeasurmentList_CellContentClick(object sender, DataGridViewCellEventArgs e) {
+
+        }
+
         private void button2_Click(object sender, EventArgs e) {
-            readFile(testFilePath);
+            readFile(filePath);
         }
 
 
@@ -171,6 +180,7 @@ namespace CarSensor_Lernsituation {
                 StreamWriter.Close();
             } catch (Exception exceptions) {
                 MessageBox.Show($"ooops, something went wrong processing your inputs{newLines(3)}{exceptions.Message}");
+                Debug.WriteLine(exceptions);
             }
         }
     }

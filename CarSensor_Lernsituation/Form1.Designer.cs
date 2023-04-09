@@ -41,16 +41,8 @@ namespace CarSensor_Lernsituation {
             this.panel1 = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
             this.MeasurmentList = new System.Windows.Forms.DataGridView();
-            this.timeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.speedDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.distanceLDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.distanceMDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.distanceRDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.sensor1DataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.sensor2DataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.sensor3DataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.EnoughDistanceCol = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.messwertBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.messwertBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.SpeedBox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.input_left)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.input_middle)).BeginInit();
@@ -59,6 +51,7 @@ namespace CarSensor_Lernsituation {
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.MeasurmentList)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.messwertBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.messwertBindingSource1)).BeginInit();
             this.SuspendLayout();
             // 
             // dateTimePicker1
@@ -262,17 +255,7 @@ namespace CarSensor_Lernsituation {
             this.MeasurmentList.AllowUserToOrderColumns = true;
             this.MeasurmentList.AutoGenerateColumns = false;
             this.MeasurmentList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.MeasurmentList.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.timeDataGridViewTextBoxColumn,
-            this.speedDataGridViewTextBoxColumn,
-            this.distanceLDataGridViewTextBoxColumn,
-            this.distanceMDataGridViewTextBoxColumn,
-            this.distanceRDataGridViewTextBoxColumn,
-            this.sensor1DataGridViewTextBoxColumn,
-            this.sensor2DataGridViewTextBoxColumn,
-            this.sensor3DataGridViewTextBoxColumn,
-            this.EnoughDistanceCol});
-            this.MeasurmentList.DataSource = this.messwertBindingSource;
+            this.MeasurmentList.DataSource = this.messwertBindingSource1;
             this.MeasurmentList.Dock = System.Windows.Forms.DockStyle.Fill;
             this.MeasurmentList.Location = new System.Drawing.Point(0, 189);
             this.MeasurmentList.Margin = new System.Windows.Forms.Padding(0);
@@ -281,81 +264,15 @@ namespace CarSensor_Lernsituation {
             this.MeasurmentList.Size = new System.Drawing.Size(726, 296);
             this.MeasurmentList.TabIndex = 7;
             this.MeasurmentList.Tag = "Display";
-            // 
-            // timeDataGridViewTextBoxColumn
-            // 
-            this.timeDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.timeDataGridViewTextBoxColumn.DataPropertyName = "Time";
-            this.timeDataGridViewTextBoxColumn.HeaderText = "Time";
-            this.timeDataGridViewTextBoxColumn.Name = "timeDataGridViewTextBoxColumn";
-            this.timeDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // speedDataGridViewTextBoxColumn
-            // 
-            this.speedDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.speedDataGridViewTextBoxColumn.DataPropertyName = "Speed";
-            this.speedDataGridViewTextBoxColumn.HeaderText = "Speed";
-            this.speedDataGridViewTextBoxColumn.Name = "speedDataGridViewTextBoxColumn";
-            this.speedDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // distanceLDataGridViewTextBoxColumn
-            // 
-            this.distanceLDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.distanceLDataGridViewTextBoxColumn.DataPropertyName = "DistanceL";
-            this.distanceLDataGridViewTextBoxColumn.HeaderText = "DistanceL";
-            this.distanceLDataGridViewTextBoxColumn.Name = "distanceLDataGridViewTextBoxColumn";
-            this.distanceLDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // distanceMDataGridViewTextBoxColumn
-            // 
-            this.distanceMDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.distanceMDataGridViewTextBoxColumn.DataPropertyName = "DistanceM";
-            this.distanceMDataGridViewTextBoxColumn.HeaderText = "DistanceM";
-            this.distanceMDataGridViewTextBoxColumn.Name = "distanceMDataGridViewTextBoxColumn";
-            this.distanceMDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // distanceRDataGridViewTextBoxColumn
-            // 
-            this.distanceRDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.distanceRDataGridViewTextBoxColumn.DataPropertyName = "DistanceR";
-            this.distanceRDataGridViewTextBoxColumn.HeaderText = "DistanceR";
-            this.distanceRDataGridViewTextBoxColumn.Name = "distanceRDataGridViewTextBoxColumn";
-            this.distanceRDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // sensor1DataGridViewTextBoxColumn
-            // 
-            this.sensor1DataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.sensor1DataGridViewTextBoxColumn.DataPropertyName = "Sensor1";
-            this.sensor1DataGridViewTextBoxColumn.HeaderText = "Sensor1";
-            this.sensor1DataGridViewTextBoxColumn.Name = "sensor1DataGridViewTextBoxColumn";
-            this.sensor1DataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // sensor2DataGridViewTextBoxColumn
-            // 
-            this.sensor2DataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.sensor2DataGridViewTextBoxColumn.DataPropertyName = "Sensor2";
-            this.sensor2DataGridViewTextBoxColumn.HeaderText = "Sensor2";
-            this.sensor2DataGridViewTextBoxColumn.Name = "sensor2DataGridViewTextBoxColumn";
-            this.sensor2DataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // sensor3DataGridViewTextBoxColumn
-            // 
-            this.sensor3DataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.sensor3DataGridViewTextBoxColumn.DataPropertyName = "Sensor3";
-            this.sensor3DataGridViewTextBoxColumn.HeaderText = "Sensor3";
-            this.sensor3DataGridViewTextBoxColumn.Name = "sensor3DataGridViewTextBoxColumn";
-            this.sensor3DataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // EnoughDistanceCol
-            // 
-            this.EnoughDistanceCol.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.EnoughDistanceCol.HeaderText = "Genug Abstand?";
-            this.EnoughDistanceCol.Name = "EnoughDistanceCol";
-            this.EnoughDistanceCol.ReadOnly = true;
+            this.MeasurmentList.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.MeasurmentList_CellContentClick);
             // 
             // messwertBindingSource
             // 
             this.messwertBindingSource.DataSource = typeof(Messwert);
+            // 
+            // messwertBindingSource1
+            // 
+            this.messwertBindingSource1.DataSource = typeof(Messwert);
             // 
             // Window
             // 
@@ -378,6 +295,7 @@ namespace CarSensor_Lernsituation {
             this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.MeasurmentList)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.messwertBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.messwertBindingSource1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -399,16 +317,8 @@ namespace CarSensor_Lernsituation {
         private Label label1;
         private DataGridView MeasurmentList;
         private Button refreshButton;
-        private DataGridViewTextBoxColumn timeDataGridViewTextBoxColumn;
-        private DataGridViewTextBoxColumn speedDataGridViewTextBoxColumn;
-        private DataGridViewTextBoxColumn distanceLDataGridViewTextBoxColumn;
-        private DataGridViewTextBoxColumn distanceMDataGridViewTextBoxColumn;
-        private DataGridViewTextBoxColumn distanceRDataGridViewTextBoxColumn;
-        private DataGridViewTextBoxColumn sensor1DataGridViewTextBoxColumn;
-        private DataGridViewTextBoxColumn sensor2DataGridViewTextBoxColumn;
-        private DataGridViewTextBoxColumn sensor3DataGridViewTextBoxColumn;
-        private DataGridViewTextBoxColumn EnoughDistanceCol;
         private BindingSource messwertBindingSource;
+        private BindingSource messwertBindingSource1;
     }
 }
 
