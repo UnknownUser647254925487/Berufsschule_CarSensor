@@ -13,9 +13,9 @@ public class Messwert
 	}
 
 
-    private double speed, distance1, distance2, distance3;
-    private Sensor sensor1, sensor2, sensor3;
-    private string time;
+    readonly private double speed, distance1, distance2, distance3;
+    readonly private Sensor sensor1, sensor2, sensor3;
+    readonly private string time;
 
     
     public Messwert() { }
@@ -24,9 +24,7 @@ public class Messwert
         this.time = time;
         this.speed = speed;
         this.sensor1 = (Sensor)sensor1;
-        if (distance > 0) {
             this.distance1 = distance;
-        }
     }
     public Messwert(string time, double speed, Sensor sensor1, double distance1, Sensor sensor2, double distance2) {
         this.time = time;
@@ -34,12 +32,8 @@ public class Messwert
         this.sensor1 = (Sensor)sensor1;
         this.sensor2 = (Sensor)sensor2;
 
-        if (distance1 > 0) {
             this.distance1 = distance1;
-        }
-        if (distance2 > 0) {
             this.distance2 = distance2;
-        }
 
     }
     public Messwert(string time, double speed, Sensor sensor1, double distance1, Sensor sensor2, double distance2, Sensor sensor3, double distance3) {
@@ -48,15 +42,9 @@ public class Messwert
         this.sensor1 = (Sensor)sensor1;
         this.sensor2 = (Sensor)sensor2;
         this.sensor3 = (Sensor)sensor3;
-        if (distance1 > 0) {
-            this.distance1 = distance1;
-        }
-        if (distance2 > 0) {
-            this.distance2 = distance2;
-        }
-        if (distance3 > 0) {
-            this.distance3 = distance3;
-        }
+        this.distance1 = distance1;
+        this.distance2 = distance2;
+        this.distance3 = distance3;
     }
     //Getter for all Variables
     public double Speed {
@@ -116,3 +104,37 @@ public class Messwert
         }
     }
 }
+public class MiniMesswert : Messwert{
+    private bool enoughDist;
+    private double speed, distance;
+    private Sensor sensor;
+    private string time;
+
+    public MiniMesswert() { }
+
+    public MiniMesswert(Messwert messwert) {
+        //choose minimal Distance and Sensor
+        if ((messwert.DistanceL <= messwert.DistanceM) && (messwert.DistanceL <= messwert.DistanceR)) {
+             this.distance = messwert.DistanceL;
+            this.sensor = messwert.Sensor1;
+        } else if ((messwert.DistanceM <= messwert.DistanceL) && (messwert.DistanceM <= messwert.DistanceR)) {
+            this.distance = messwert.DistanceM;
+            this.sensor = messwert.Sensor2;
+        } else {
+            this.distance = messwert.DistanceR;
+            this.sensor = messwert.Sensor3;
+        }
+        
+        time = messwert.Time;
+        speed = messwert.Speed;
+        enoughDist = (speed/2)>=distance;
+    }
+
+    //getter
+    public string Time { get;}
+    public double Speed { get;}
+    public double Sensor { get;}
+    public double Distance { get;}
+    public bool EnoughDist { get;}
+}
+
