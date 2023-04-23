@@ -25,7 +25,6 @@ namespace CarSensor_Lernsituation {
         /// the contents of this method with the code editor.
         /// </summary>
         private void InitializeComponent() {
-            this.components = new System.ComponentModel.Container();
             this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
             this.submitButton = new System.Windows.Forms.Button();
             this.Label_Speed = new System.Windows.Forms.Label();
@@ -41,10 +40,6 @@ namespace CarSensor_Lernsituation {
             this.panel1 = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
             this.MeasurmentList = new System.Windows.Forms.DataGridView();
-            this.TimeColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.SpeedColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.DistanceColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Results = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.SpeedBox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.input_left)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.input_middle)).BeginInit();
@@ -253,12 +248,7 @@ namespace CarSensor_Lernsituation {
             // 
             this.MeasurmentList.AllowUserToDeleteRows = false;
             this.MeasurmentList.AllowUserToOrderColumns = true;
-            this.MeasurmentList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.MeasurmentList.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.TimeColumn,
-            this.SpeedColumn,
-            this.DistanceColumn,
-            this.Results});
+            this.MeasurmentList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             this.MeasurmentList.Dock = System.Windows.Forms.DockStyle.Fill;
             this.MeasurmentList.Location = new System.Drawing.Point(0, 189);
             this.MeasurmentList.Margin = new System.Windows.Forms.Padding(0);
@@ -268,33 +258,6 @@ namespace CarSensor_Lernsituation {
             this.MeasurmentList.TabIndex = 7;
             this.MeasurmentList.Tag = "Display";
             this.MeasurmentList.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.MeasurmentList_CellContentClick);
-            // 
-            // TimeColumn
-            // 
-            this.TimeColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.TimeColumn.HeaderText = "Zeitpunkt";
-            this.TimeColumn.Name = "TimeColumn";
-            // 
-            // SpeedColumn
-            // 
-            this.SpeedColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.SpeedColumn.HeaderText = "Geschwindigkeit in km/h";
-            this.SpeedColumn.Name = "SpeedColumn";
-            this.SpeedColumn.ReadOnly = true;
-            // 
-            // DistanceColumn
-            // 
-            this.DistanceColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.DistanceColumn.HeaderText = "Minimaler Abstand";
-            this.DistanceColumn.Name = "DistanceColumn";
-            this.DistanceColumn.ReadOnly = true;
-            // 
-            // Results
-            // 
-            this.Results.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.Results.HeaderText = "Genug Abstand?";
-            this.Results.Name = "Results";
-            this.Results.ReadOnly = true;
             // 
             // Window
             // 
@@ -337,10 +300,6 @@ namespace CarSensor_Lernsituation {
         private Label label1;
         private DataGridView MeasurmentList;
         private Button refreshButton;
-        private DataGridViewTextBoxColumn TimeColumn;
-        private DataGridViewTextBoxColumn SpeedColumn;
-        private DataGridViewTextBoxColumn DistanceColumn;
-        private DataGridViewTextBoxColumn Results;
     }
 }
 

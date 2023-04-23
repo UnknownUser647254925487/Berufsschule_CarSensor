@@ -23,15 +23,17 @@ namespace CarSensor_Lernsituation {
         //Code to be executed 'before' UI is built
         private void ReadFile(String filePath, DataGridView table) {
             StreamReader leseStream = new StreamReader(filePath);
-            Debug.Write("Reading:");
+            Debug.WriteLine("Reading:");
             int i = 0;
             while (leseStream.Peek() > 0) {
                 String line = leseStream.ReadLine();
                 try {
-                    measuredData.Add(new MiniMesswert(messwertFromString(line)));
+                    MiniMesswert miniMess = new MiniMesswert(messwertFromString(line));
+                    measuredData.Add(miniMess);
+                    Debug.WriteLine(miniMess.toString());
                     i++;
                 }catch (Exception ex) {
-                    Debug.WriteLine(ex.ToString());
+                    Debug.WriteLine("ReadFile:\n"+ex.ToString());
                 }
             }
             Debug.WriteLine($"Read: {i} lines");
@@ -47,6 +49,8 @@ namespace CarSensor_Lernsituation {
 
         private void InitializeTable() {
             MeasurmentList.DataSource = measuredData;
+            MeasurmentList.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            MeasurmentList.AutoGenerateColumns = false;
 
             // Initialize and add a text box column for the Time
             DataGridViewColumn timeCol = new DataGridViewTextBoxColumn();
@@ -60,15 +64,15 @@ namespace CarSensor_Lernsituation {
             MeasurmentList.Columns.Add(speedCol);
             // Initialize and add a text box column for the Speed
             DataGridViewColumn sensorCol = new DataGridViewTextBoxColumn();
-            sensorCol.DataPropertyName = "speed";
-            sensorCol.Name = "Geschwindigkeit";
+            sensorCol.DataPropertyName = "sensor";
+            sensorCol.Name = "Sensor";
             MeasurmentList.Columns.Add(sensorCol);
             // Initialize and add a text box column for the min. Distance
             DataGridViewColumn distanceCol = new DataGridViewTextBoxColumn();
             distanceCol.DataPropertyName = "distance";
             distanceCol.Name = "Abstand";
             MeasurmentList.Columns.Add(distanceCol);
-            // Initialize and add a text box column for weather enough distance was held
+            // Initialize and add a text box column for wheather enough distance was held
             DataGridViewColumn enoughCol = new DataGridViewTextBoxColumn();
             enoughCol.Name = "Genug Abstand gehalten?";
             MeasurmentList.Columns.Add(enoughCol);
@@ -104,7 +108,7 @@ namespace CarSensor_Lernsituation {
             try {
                 safeToFile(filePath, data);
                 //add new 'Object' to the List of already exiting ones
-                measuredData.Add(data);
+                measuredData.Add(new MiniMesswert(data));
             }catch (Exception ex) { 
                 Debug.WriteLine(ex);
             }
@@ -183,14 +187,17 @@ namespace CarSensor_Lernsituation {
                 sens2 = sensorFromString(parts[5]);
                 distance2 = double.Parse(parts[6]);
                 lineMesswert = new Messwert(time, speed, sens1, distance1, sens2, distance2);
+                Debug.WriteLine("M2");
             } else if (parts.Length > 7) {
                 sens2 = sensorFromString(parts[5]);
                 distance2 = double.Parse(parts[6]);
                 sens3 = sensorFromString(parts[7]);
                 distance3 = double.Parse(parts[8]);
                 lineMesswert = new Messwert(time, speed, sens1, distance1, sens2, distance2, sens3, distance3);
+                Debug.WriteLine("M3");
             } else {
                 lineMesswert = new Messwert(time, speed, sens1, distance1);
+                Debug.WriteLine("M1");
             }
             return lineMesswert;
         }
@@ -211,6 +218,7 @@ namespace CarSensor_Lernsituation {
                 //save data to file
                 StreamWriter.WriteLine(data.toString());
                 StreamWriter.Close();
+                Debug.WriteLine($"Succesfully safed data to the file: {filePath}");
             } catch (Exception exceptions) {
                 MessageBox.Show($"ooops, something went wrong processing your inputs{newLines(3)}{exceptions.Message}");
                 Debug.WriteLine(exceptions);
