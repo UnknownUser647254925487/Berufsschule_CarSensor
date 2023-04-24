@@ -87,9 +87,9 @@ namespace CarSensor_Lernsituation {
             this.SpeedBox.DecimalPlaces = 2;
             this.SpeedBox.Location = new System.Drawing.Point(368, 5);
             this.SpeedBox.Maximum = new decimal(new int[] {
-            600,
-            0,
-            0,
+            -1593835521,
+            466537709,
+            54210,
             0});
             this.SpeedBox.Name = "SpeedBox";
             this.SpeedBox.RightToLeft = System.Windows.Forms.RightToLeft.No;
@@ -105,9 +105,9 @@ namespace CarSensor_Lernsituation {
             this.input_left.DecimalPlaces = 2;
             this.input_left.Location = new System.Drawing.Point(368, 101);
             this.input_left.Maximum = new decimal(new int[] {
-            600,
-            0,
-            0,
+            -1593835521,
+            466537709,
+            54210,
             0});
             this.input_left.Name = "input_left";
             this.input_left.RightToLeft = System.Windows.Forms.RightToLeft.No;
@@ -122,9 +122,9 @@ namespace CarSensor_Lernsituation {
             this.input_middle.DecimalPlaces = 2;
             this.input_middle.Location = new System.Drawing.Point(368, 69);
             this.input_middle.Maximum = new decimal(new int[] {
-            600,
-            0,
-            0,
+            -1593835521,
+            466537709,
+            54210,
             0});
             this.input_middle.Name = "input_middle";
             this.input_middle.RightToLeft = System.Windows.Forms.RightToLeft.No;
@@ -167,9 +167,9 @@ namespace CarSensor_Lernsituation {
             this.input_right.DecimalPlaces = 2;
             this.input_right.Location = new System.Drawing.Point(368, 37);
             this.input_right.Maximum = new decimal(new int[] {
-            600,
-            0,
-            0,
+            -1593835521,
+            466537709,
+            54210,
             0});
             this.input_right.Name = "input_right";
             this.input_right.RightToLeft = System.Windows.Forms.RightToLeft.No;

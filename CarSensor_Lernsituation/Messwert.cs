@@ -3,6 +3,8 @@
  * in group with Josia Happel & Jonas Hesse
  */
 using System;
+using System.Diagnostics;
+using System.Linq;
 using static Messwert;
 
 
@@ -103,6 +105,7 @@ public class Messwert
         default: throw new Exception("Couldn't convert sensor to String");
         }
     }
+
 }
 public class MiniMesswert {
     private bool enoughDist;
@@ -115,19 +118,35 @@ public class MiniMesswert {
     
     public MiniMesswert(Messwert messwert) {
         //choose minimal Distance and Sensor
+        /*
         if ((messwert.DistanceL > 0) && (messwert.DistanceL <= messwert.DistanceM) && (messwert.DistanceL <= messwert.DistanceR)) {
              this.distance = messwert.DistanceL;
             this.sensor = (Messwert.Sensor)messwert.Sensor1;
         } else if ((messwert.DistanceM > 0) && (messwert.DistanceM <= messwert.DistanceL) && (messwert.DistanceM <= messwert.DistanceR)) {
             this.distance = messwert.DistanceM;
             this.sensor = (Messwert.Sensor)messwert.Sensor2;
-        } else {
+        } else if ((messwert.DistanceR > 0) && (messwert.DistanceR <= messwert.DistanceL) && (messwert.DistanceR <= messwert.DistanceM)) {
             this.distance = messwert.DistanceR;
             this.sensor = (Messwert.Sensor)messwert.Sensor3;
-        }
-        
-        time = messwert.Time;
-        speed = messwert.Speed;
+        } else {
+            throw new Exception("Stooopid");
+        }*/
+        //get minimal distacne
+        double[] arr = {messwert.DistanceL, messwert.DistanceM, messwert.DistanceR };
+        this.distance = arr.Where(x => x != 0).Min();
+        Debug.WriteLine($"Mini DIst: {this.distance}");
+
+        if(this.distance == messwert.DistanceL) {
+            this.sensor = messwert.Sensor1;
+        }else if (this.distance == messwert.DistanceM) {
+            this.sensor = messwert.Sensor2;
+        }else if (this.distance == messwert.DistanceR) {
+            this.sensor = messwert.Sensor3;
+        } else { throw new Exception("Fooooking Stooooopid"); }
+
+
+        this.time = messwert.Time;
+        this.speed = messwert.Speed;
         if ((speed / 2) <= distance) {
             this.enoughDist = true;
         } else {  this.enoughDist = false; }

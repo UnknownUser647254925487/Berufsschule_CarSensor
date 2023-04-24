@@ -28,7 +28,8 @@ namespace CarSensor_Lernsituation {
             while (leseStream.Peek() > 0) {
                 String line = leseStream.ReadLine();
                 try {
-                    MiniMesswert miniMess = new MiniMesswert(messwertFromString(line));
+                    Messwert Mess = (messwertFromString(line));
+                    MiniMesswert miniMess = new MiniMesswert(Mess);
                     measuredData.Add(miniMess);
                     Debug.WriteLine(miniMess.toString());
                     i++;
@@ -36,7 +37,7 @@ namespace CarSensor_Lernsituation {
                     Debug.WriteLine("ReadFile:\n"+ex.ToString());
                 }
             }
-            Debug.WriteLine($"Read: {i} lines");
+            Debug.WriteLine($"Read: {i} lines from: {filePath}");
             leseStream.Close();
         }
 
@@ -50,8 +51,8 @@ namespace CarSensor_Lernsituation {
         private void InitializeTable() {
             MeasurmentList.DataSource = measuredData;
             MeasurmentList.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-            MeasurmentList.AutoGenerateColumns = false;
-
+            MeasurmentList.AutoGenerateColumns = true;
+            /*
             // Initialize and add a text box column for the Time
             DataGridViewColumn timeCol = new DataGridViewTextBoxColumn();
             timeCol.DataPropertyName = "time";
@@ -76,6 +77,7 @@ namespace CarSensor_Lernsituation {
             DataGridViewColumn enoughCol = new DataGridViewTextBoxColumn();
             enoughCol.Name = "Genug Abstand gehalten?";
             MeasurmentList.Columns.Add(enoughCol);
+            */
         }
 
         //Submit-button
