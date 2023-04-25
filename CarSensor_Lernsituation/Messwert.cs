@@ -153,11 +153,15 @@ public class MiniMesswert {
     }
 
     //getter
-    public string Time { get;}
-    public double Speed { get;}
-    public double Sensor { get;}
-    public double Distance { get;}
-    public bool EnoughDist { get;}
+    public string Time {
+        get { return this.time; }
+    }
+    public double Speed {
+        get  { return this.speed; }
+    }
+    public Sensor Sensor { get { return this.sensor; } }
+    public double Distance { get { return this.distance; } }
+    public bool EnoughDist { get { return this.enoughDist; } }
 
     public string toString() {
         return $"t:{this.time}; v:{this.speed}; S:{this.sensor}; d:{this.distance}; t/f: {this.enoughDist}";

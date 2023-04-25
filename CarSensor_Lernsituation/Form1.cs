@@ -29,16 +29,22 @@ namespace CarSensor_Lernsituation {
                 String line = leseStream.ReadLine();
                 try {
                     Messwert Mess = (messwertFromString(line));
+                    //Messwert miniMess = (messwertFromString(line));
                     MiniMesswert miniMess = new MiniMesswert(Mess);
                     measuredData.Add(miniMess);
-                    Debug.WriteLine(miniMess.toString());
+                    Debug.WriteLine("MiniMess: " + miniMess.toString());
+                    Debug.WriteLine("Mess: "+Mess.toString());
                     i++;
-                }catch (Exception ex) {
+                } catch (Exception ex) {
                     Debug.WriteLine("ReadFile:\n"+ex.ToString());
                 }
             }
             Debug.WriteLine($"Read: {i} lines from: {filePath}");
             leseStream.Close();
+
+            //foreach (MiniMesswert dat in measuredData) {
+            //    Debug.WriteLine($"MesDat: {dat.toString()}");
+            //}
         }
 
 
