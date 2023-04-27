@@ -31,3 +31,14 @@ C:\Users\Andreas\OneDrive\Dokumente\_Berufsschule\BfK-S\Berufsschule_CarSensor\C
 C:\Users\Andreas\OneDrive\Dokumente\_Berufsschule\BfK-S\Berufsschule_CarSensor\CarSensor_Lernsituation\obj\Debug\CarSensor_Lernsituation.csproj.CoreCompileInputs.cache
 C:\Users\Andreas\OneDrive\Dokumente\_Berufsschule\BfK-S\Berufsschule_CarSensor\CarSensor_Lernsituation\obj\Debug\CarSensor_Lernsituation.exe
 C:\Users\Andreas\OneDrive\Dokumente\_Berufsschule\BfK-S\Berufsschule_CarSensor\CarSensor_Lernsituation\obj\Debug\CarSensor_Lernsituation.pdb
+C:\Users\josia\OneDrive\Desktop\Development\ITschule\Lernsituation\Berufsschule_CarSensor\CarSensor_Lernsituation\bin\Debug\CarSensor_Lernsituation.exe.config
+C:\Users\josia\OneDrive\Desktop\Development\ITschule\Lernsituation\Berufsschule_CarSensor\CarSensor_Lernsituation\bin\Debug\CarSensor_Lernsituation.exe
+C:\Users\josia\OneDrive\Desktop\Development\ITschule\Lernsituation\Berufsschule_CarSensor\CarSensor_Lernsituation\bin\Debug\CarSensor_Lernsituation.pdb
+C:\Users\josia\OneDrive\Desktop\Development\ITschule\Lernsituation\Berufsschule_CarSensor\CarSensor_Lernsituation\obj\Debug\CarSensor_Lernsituation.csproj.AssemblyReference.cache
+C:\Users\josia\OneDrive\Desktop\Development\ITschule\Lernsituation\Berufsschule_CarSensor\CarSensor_Lernsituation\obj\Debug\CarSensor_Lernsituation.csproj.SuggestedBindingRedirects.cache
+C:\Users\josia\OneDrive\Desktop\Development\ITschule\Lernsituation\Berufsschule_CarSensor\CarSensor_Lernsituation\obj\Debug\CarSensor_Lernsituation.Window.resources
+C:\Users\josia\OneDrive\Desktop\Development\ITschule\Lernsituation\Berufsschule_CarSensor\CarSensor_Lernsituation\obj\Debug\CarSensor_Lernsituation.Properties.Resources.resources
+C:\Users\josia\OneDrive\Desktop\Development\ITschule\Lernsituation\Berufsschule_CarSensor\CarSensor_Lernsituation\obj\Debug\CarSensor_Lernsituation.csproj.GenerateResource.cache
+C:\Users\josia\OneDrive\Desktop\Development\ITschule\Lernsituation\Berufsschule_CarSensor\CarSensor_Lernsituation\obj\Debug\CarSensor_Lernsituation.csproj.CoreCompileInputs.cache
+C:\Users\josia\OneDrive\Desktop\Development\ITschule\Lernsituation\Berufsschule_CarSensor\CarSensor_Lernsituation\obj\Debug\CarSensor_Lernsituation.exe
+C:\Users\josia\OneDrive\Desktop\Development\ITschule\Lernsituation\Berufsschule_CarSensor\CarSensor_Lernsituation\obj\Debug\CarSensor_Lernsituation.pdb

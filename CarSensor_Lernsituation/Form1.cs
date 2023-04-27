@@ -47,8 +47,6 @@ namespace CarSensor_Lernsituation {
             //}
         }
 
-
-
         public Window() {
             InitializeComponent();
             InitializeTable();
@@ -130,29 +128,9 @@ namespace CarSensor_Lernsituation {
 
         }
 
-        private void tableLayoutPanel1_Paint(object sender, PaintEventArgs e) {
-
-        }
-
-        private void panel1_Paint(object sender, PaintEventArgs e) {
-
-        }
-
         private void label1_Click(object sender, EventArgs e) {
 
         }
-
-        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e) {
-
-        }
-        private void chart1_Click(object sender, EventArgs e) {
-
-        }
-
-        private void flowLayoutPanel1_Paint(object sender, PaintEventArgs e) {
-
-        }
-
 
         //Code that will be executed on button click
         string time;
@@ -166,15 +144,9 @@ namespace CarSensor_Lernsituation {
 
         }
 
-        private void messwertBindingSource_CurrentChanged(object sender, EventArgs e) {
-
-        }
-
         private void button2_Click(object sender, EventArgs e) {
             ReadFile(filePath, MeasurmentList);
         }
-
-
 
         public static string newLines(int count) {
             return new string('\n', count);
