@@ -105,7 +105,7 @@ namespace CarSensor_Lernsituation {
                 }else if (colorDist > 0) {
                     e.CellStyle.BackColor = Color.LightGreen;
                 }else {
-                    e.CellStyle.BackColor = Color.White;
+                    e.CellStyle.BackColor = Color.FromArgb(190,250,180);
                 }
             }
         }
