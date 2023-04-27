@@ -108,8 +108,7 @@ public class Messwert
 
 }
 public class MiniMesswert {
-    private bool enoughDist;
-    private double speed, distance;
+    private double speed, distance, enoughDist;
     private Sensor sensor;
     private string time;
 
@@ -134,9 +133,7 @@ public class MiniMesswert {
 
         this.time = messwert.Time;
         this.speed = messwert.Speed;
-        if ((speed / 2) <= distance) {
-            this.enoughDist = true;
-        } else {  this.enoughDist = false; }
+        this.enoughDist = (this.distance - (Speed/2));
     }
 
     //getter
@@ -152,7 +149,7 @@ public class MiniMesswert {
     public double Distance { 
         get  { return this.distance; } 
     }
-    public bool EnoughDist { 
+    public double EnoughDist { 
         get { return this.enoughDist; } 
     }
 
