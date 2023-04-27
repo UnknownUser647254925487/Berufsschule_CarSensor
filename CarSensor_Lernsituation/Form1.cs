@@ -19,6 +19,10 @@ namespace CarSensor_Lernsituation {
         readonly static string filePath = Path.Combine(directoryPath, @"SensorData.txt");
         BindingSource measuredData = new  BindingSource();
 
+        //Code that will be executed on button click
+        string time;
+        double speed, distanceL, distanceM, distanceR;
+
 
         //Code to be executed 'before' UI is built
         private void ReadFile(String filePath, DataGridView table) {
@@ -29,7 +33,6 @@ namespace CarSensor_Lernsituation {
                 String line = leseStream.ReadLine();
                 try {
                     Messwert Mess = (messwertFromString(line));
-                    //Messwert miniMess = (messwertFromString(line));
                     MiniMesswert miniMess = new MiniMesswert(Mess);
                     measuredData.Add(miniMess);
                     Debug.WriteLine("MiniMess: " + miniMess.toString());
@@ -41,11 +44,7 @@ namespace CarSensor_Lernsituation {
             }
             Debug.WriteLine($"Read: {i} lines from: {filePath}");
             leseStream.Close();
-
-            //foreach (MiniMesswert dat in measuredData) {
-            //    Debug.WriteLine($"MesDat: {dat.toString()}");
-            //}
-        }
+            }
 
         public Window() {
             InitializeComponent();
@@ -56,32 +55,6 @@ namespace CarSensor_Lernsituation {
             MeasurmentList.DataSource = measuredData;
             MeasurmentList.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             MeasurmentList.AutoGenerateColumns = true;
-            /*
-            // Initialize and add a text box column for the Time
-            DataGridViewColumn timeCol = new DataGridViewTextBoxColumn();
-            timeCol.DataPropertyName = "time";
-            timeCol.Name = "Zeitpunkt";
-            MeasurmentList.Columns.Add(timeCol);
-            // Initialize and add a text box column for the Speed
-            DataGridViewColumn speedCol = new DataGridViewTextBoxColumn();
-            speedCol.DataPropertyName = "speed";
-            speedCol.Name = "Geschwindigkeit";
-            MeasurmentList.Columns.Add(speedCol);
-            // Initialize and add a text box column for the Speed
-            DataGridViewColumn sensorCol = new DataGridViewTextBoxColumn();
-            sensorCol.DataPropertyName = "sensor";
-            sensorCol.Name = "Sensor";
-            MeasurmentList.Columns.Add(sensorCol);
-            // Initialize and add a text box column for the min. Distance
-            DataGridViewColumn distanceCol = new DataGridViewTextBoxColumn();
-            distanceCol.DataPropertyName = "distance";
-            distanceCol.Name = "Abstand";
-            MeasurmentList.Columns.Add(distanceCol);
-            // Initialize and add a text box column for wheather enough distance was held
-            DataGridViewColumn enoughCol = new DataGridViewTextBoxColumn();
-            enoughCol.Name = "Genug Abstand gehalten?";
-            MeasurmentList.Columns.Add(enoughCol);
-            */
         }
 
         //Submit-button
@@ -120,29 +93,11 @@ namespace CarSensor_Lernsituation {
             }
         }
 
-        private void dateTimePicker1_ValueChanged(object sender, EventArgs e) {
-
-        }
-
+        
         private void Form1_Load(object sender, EventArgs e) {
 
         }
 
-        private void label1_Click(object sender, EventArgs e) {
-
-        }
-
-        //Code that will be executed on button click
-        string time;
-        double speed, distanceL, distanceM, distanceR;
-
-        private void SpeedBox_ValueChanged(object sender, EventArgs e) {
-
-        }
-
-        private void MeasurmentList_CellContentClick(object sender, DataGridViewCellEventArgs e) {
-
-        }
 
         private void button2_Click(object sender, EventArgs e) {
             ReadFile(filePath, MeasurmentList);

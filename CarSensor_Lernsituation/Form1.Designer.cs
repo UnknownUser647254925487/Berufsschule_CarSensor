@@ -59,7 +59,6 @@ namespace CarSensor_Lernsituation {
             this.dateTimePicker1.Size = new System.Drawing.Size(199, 20);
             this.dateTimePicker1.TabIndex = 0;
             this.dateTimePicker1.Tag = "TimePicker";
-            this.dateTimePicker1.ValueChanged += new System.EventHandler(this.dateTimePicker1_ValueChanged);
             // 
             // submitButton
             // 
@@ -98,7 +97,6 @@ namespace CarSensor_Lernsituation {
             this.SpeedBox.Tag = "SpeedBox";
             this.SpeedBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.SpeedBox.ThousandsSeparator = true;
-            this.SpeedBox.ValueChanged += new System.EventHandler(this.SpeedBox_ValueChanged);
             // 
             // input_left
             // 
@@ -242,7 +240,6 @@ namespace CarSensor_Lernsituation {
             this.label1.Tag = "Heading";
             this.label1.Text = "Abstandsmesser";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
             // MeasurmentList
             // 
@@ -257,7 +254,6 @@ namespace CarSensor_Lernsituation {
             this.MeasurmentList.Size = new System.Drawing.Size(726, 296);
             this.MeasurmentList.TabIndex = 7;
             this.MeasurmentList.Tag = "Display";
-            this.MeasurmentList.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.MeasurmentList_CellContentClick);
             // 
             // Window
             // 

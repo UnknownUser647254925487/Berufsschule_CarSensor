@@ -118,24 +118,11 @@ public class MiniMesswert {
     
     public MiniMesswert(Messwert messwert) {
         //choose minimal Distance and Sensor
-        /*
-        if ((messwert.DistanceL > 0) && (messwert.DistanceL <= messwert.DistanceM) && (messwert.DistanceL <= messwert.DistanceR)) {
-             this.distance = messwert.DistanceL;
-            this.sensor = (Messwert.Sensor)messwert.Sensor1;
-        } else if ((messwert.DistanceM > 0) && (messwert.DistanceM <= messwert.DistanceL) && (messwert.DistanceM <= messwert.DistanceR)) {
-            this.distance = messwert.DistanceM;
-            this.sensor = (Messwert.Sensor)messwert.Sensor2;
-        } else if ((messwert.DistanceR > 0) && (messwert.DistanceR <= messwert.DistanceL) && (messwert.DistanceR <= messwert.DistanceM)) {
-            this.distance = messwert.DistanceR;
-            this.sensor = (Messwert.Sensor)messwert.Sensor3;
-        } else {
-            throw new Exception("Stooopid");
-        }*/
         //get minimal distacne
         double[] arr = {messwert.DistanceL, messwert.DistanceM, messwert.DistanceR };
         this.distance = arr.Where(x => x != 0).Min();
         Debug.WriteLine($"Mini DIst: {this.distance}");
-
+        //get the associated sensor
         if(this.distance == messwert.DistanceL) {
             this.sensor = messwert.Sensor1;
         }else if (this.distance == messwert.DistanceM) {
@@ -159,9 +146,15 @@ public class MiniMesswert {
     public double Speed {
         get  { return this.speed; }
     }
-    public Sensor Sensor { get { return this.sensor; } }
-    public double Distance { get { return this.distance; } }
-    public bool EnoughDist { get { return this.enoughDist; } }
+    public Sensor Sensor { get 
+            { return this.sensor; } 
+    }
+    public double Distance { get 
+            { return this.distance; } 
+    }
+    public bool EnoughDist { get 
+            { return this.enoughDist; } 
+    }
 
     public string toString() {
         return $"t:{this.time}; v:{this.speed}; S:{this.sensor}; d:{this.distance}; t/f: {this.enoughDist}";
