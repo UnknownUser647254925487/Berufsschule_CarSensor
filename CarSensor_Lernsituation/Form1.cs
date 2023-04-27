@@ -11,6 +11,7 @@ using System.IO;
 using System.Windows.Forms;
 using System.Diagnostics;
 using System.Runtime.InteropServices;
+using System.Drawing;
 
 namespace CarSensor_Lernsituation {
     public partial class Window : Form {
@@ -95,7 +96,19 @@ namespace CarSensor_Lernsituation {
         private void Form1_Load(object sender, EventArgs e) {
 
         }
-
+        //change Colour of cells according to distance held
+        private void MeasurmentList_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e) {
+            if (e.ColumnIndex == 4 && e.Value != null) {
+                double colorDist = (double)e.Value;
+                if (colorDist < 0) {
+                    e.CellStyle.BackColor = Color.OrangeRed;
+                }else if (colorDist > 0) {
+                    e.CellStyle.BackColor = Color.LightGreen;
+                }else {
+                    e.CellStyle.BackColor = Color.White;
+                }
+            }
+        }
 
         private void button2_Click(object sender, EventArgs e) {
             ReadFile(filePath, MeasurmentList);
