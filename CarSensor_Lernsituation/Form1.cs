@@ -17,11 +17,9 @@ namespace CarSensor_Lernsituation {
         readonly static Messwert.Sensor sensorL = Messwert.Sensor.sensorL, sensorM = Messwert.Sensor.sensorM, sensorR = Messwert.Sensor.sensorR;
         readonly static string directoryPath = Path.GetDirectoryName(Application.ExecutablePath);
         readonly static string filePath = Path.Combine(directoryPath, @"SensorData.txt");
-        BindingSource measuredData = new  BindingSource();
-
-        //Code that will be executed on button click
-        string time;
-        double speed, distanceL, distanceM, distanceR;
+        static BindingSource measuredData = new  BindingSource();
+        static string time;
+        static double speed, distanceL, distanceM, distanceR;
 
 
         //Code to be executed 'before' UI is built
@@ -85,7 +83,7 @@ namespace CarSensor_Lernsituation {
                 MessageBox.Show($"Mindestends ein Sensor muss einen Abstand >0 haben!");
             }
             try {
-                safeToFile(filePath, data);
+                saveToFile(filePath, data);
                 //add new 'Object' to the List of already exiting ones
                 measuredData.Add(new MiniMesswert(data));
             }catch (Exception ex) { 
@@ -146,7 +144,7 @@ namespace CarSensor_Lernsituation {
             }
         }
 
-        public static void safeToFile(string filePath, Messwert data) {
+        public static void saveToFile(string filePath, Messwert data) {
             try {
                 //create *appending* StreamWriter
                 StreamWriter StreamWriter = new StreamWriter(filePath, true);

@@ -146,14 +146,14 @@ public class MiniMesswert {
     public double Speed {
         get  { return this.speed; }
     }
-    public Sensor Sensor { get 
-            { return this.sensor; } 
+    public Sensor Sensor { 
+        get  { return this.sensor; } 
     }
-    public double Distance { get 
-            { return this.distance; } 
+    public double Distance { 
+        get  { return this.distance; } 
     }
-    public bool EnoughDist { get 
-            { return this.enoughDist; } 
+    public bool EnoughDist { 
+        get { return this.enoughDist; } 
     }
 
     public string toString() {
