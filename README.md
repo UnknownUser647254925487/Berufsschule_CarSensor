@@ -15,7 +15,7 @@ den Abstand zum vorausfahrenden Fahrzeug als Datei wie folgend abgebildet. Als F
 ein Abstand des halben Tachometer-Wertes in Metern ("halber Tacho") als sicherer Abstand.
 
 
-![image](CoverImage.PNG)
+![image](Image.PNG)
 
 
 Arbeitsauftrag 1 :
