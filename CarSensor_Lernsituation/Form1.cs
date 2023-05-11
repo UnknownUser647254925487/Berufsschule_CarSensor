@@ -20,6 +20,7 @@ namespace CarSensor_Lernsituation {
         readonly static Messwert.Sensor sensorL = Messwert.Sensor.sensorL, sensorM = Messwert.Sensor.sensorM, sensorR = Messwert.Sensor.sensorR;
         readonly static string directoryPath = Path.GetDirectoryName(Application.ExecutablePath);
         readonly static string filePath = Path.Combine(directoryPath, @"SensorData.txt");
+        readonly static string dataLine = "Relativ gehaltener Abstand in m";
         static BindingSource measuredData = new  BindingSource();
         static string time;
         static double speed, distanceL, distanceM, distanceR;
@@ -74,10 +75,10 @@ namespace CarSensor_Lernsituation {
         }
 
         private void paintLineChart() {
-            chartLine.Series["Relativ gehaltener Abstand in m"].Points.Clear();
+            chartLine.Series[dataLine].Points.Clear();
             foreach (MiniMesswert miniMess in measuredData)
             {
-                chartLine.Series["Relativ gehaltener Abstand in m"].Points.AddXY(timeFromString(miniMess.Time),miniMess.EnoughDist);
+                chartLine.Series[dataLine].Points.AddXY(timeFromString(miniMess.Time),miniMess.EnoughDist);
             }
         }
 

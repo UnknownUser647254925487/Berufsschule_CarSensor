@@ -1,10 +1,8 @@
 {
   "ExpandedNodes": [
     "",
-    "\\CarSensor_Lernsituation",
-    "\\CarSensor_Lernsituation\\bin",
-    "\\CarSensor_Lernsituation\\bin\\Debug"
+    "\\CarSensor_Lernsituation"
   ],
-  "SelectedNode": "\\CarSensor_Lernsituation.sln",
+  "SelectedNode": "\\CarSensor_Lernsituation\\Form1.cs",
   "PreviewInSolutionExplorer": false
 }
