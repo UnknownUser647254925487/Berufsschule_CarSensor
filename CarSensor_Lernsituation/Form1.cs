@@ -12,6 +12,7 @@ using System.Windows.Forms;
 using System.Diagnostics;
 using System.Runtime.InteropServices;
 using System.Drawing;
+using System.Windows.Forms.DataVisualization.Charting;
 
 namespace CarSensor_Lernsituation {
     public partial class Window : Form {
@@ -50,7 +51,13 @@ namespace CarSensor_Lernsituation {
             InitializeComponent();
             InitializeTable();
             realoadTable();
-            paintChart1();
+            paintPieChart();
+            paintLineChart();
+        }
+
+        public void rePaintCharts() {
+            paintPieChart();
+            paintLineChart();
         }
 
         private void InitializeTable() {
@@ -59,27 +66,47 @@ namespace CarSensor_Lernsituation {
             MeasurmentList.AutoGenerateColumns = true;
         }
 
-        private void paintChart1() {
-            chartPie.Titles.Add("Gesmantanzahl der Messwerte mit Genug Abstand");
-            chartPie.Series["Series1"].Points.AddXY("Genug Abstand", 20);
-            chartPie.Series["Series1"].Points.AddXY("Zu wenig Abstand", 80);
+        private void paintPieChart() {
+            chartPie.Series["Series1"].Points.Clear();
+            chartPie.Series["Series1"].Points.AddXY("Genug Abstand", enoughDistNum(measuredData));
+            chartPie.Series["Series1"].Points.AddXY("Zu wenig Abstand", notEnoughDistNum(measuredData));
         }
 
-        private string enoughDistNum(BindingSource bindingSouce) {
+        private void paintLineChart() {
+            chartLine.Series["Relativ gehaltener Abstand in m"].Points.Clear();
+            foreach (MiniMesswert miniMess in measuredData)
+            {
+                chartLine.Series["Relativ gehaltener Abstand in m"].Points.AddXY(timeFromString(miniMess.Time),miniMess.EnoughDist);
+            }
+        }
+
+        private DateTime timeFromString(string timestring) {
+            DateTime timeStamp = new DateTime();
+            try { 
+                timeStamp = DateTime.ParseExact(timestring, "yyyy-MM-dd; HH:mm:ss", System.Globalization.CultureInfo.InvariantCulture);
+            }catch (FormatException ex) {
+                Debug.WriteLine($"Aaaaaaaaaaaaaaaaahhhhhhhhhhh\n{ex}");
+            }
+            return timeStamp;
+        }
+
+        private int enoughDistNum(BindingSource bindingSouce) {
             int enoughDist =0;
             foreach (MiniMesswert miniMess in bindingSouce)
             {
-                if(miniMess.Distance >= 0) { enoughDist++; }
+                if(miniMess.EnoughDist >= 0) { enoughDist++; }
             }
-            return enoughDist.ToString();
+            Debug.WriteLine($"Anzahl genug Abstand: {enoughDist}");
+            return enoughDist;
         }
 
-        private string notEnoughDistNum(BindingSource bindingSouce) {
+        private int notEnoughDistNum(BindingSource bindingSouce) {
             int notEnoughDist = 0;
             foreach (MiniMesswert miniMess in bindingSouce) {
-                if (miniMess.Distance < 0) { notEnoughDist++; }
+                if (miniMess.EnoughDist < 0) { notEnoughDist++; }
             }
-            return notEnoughDist.ToString();
+            Debug.WriteLine($"Anzahl zu wenig Abstand: {notEnoughDist}");
+            return notEnoughDist;
         }
 
         //Submit-button
@@ -116,6 +143,9 @@ namespace CarSensor_Lernsituation {
             }catch (Exception ex) { 
                 Debug.WriteLine(ex);
             }
+            //time updates on submit to current time
+            dateTimePicker1.Text = DateTime.Now.ToString();
+            rePaintCharts();
         }
 
         
@@ -137,14 +167,15 @@ namespace CarSensor_Lernsituation {
         }
 
         private void button2_Click(object sender, EventArgs e) {
+            dateTimePicker1.Text = DateTime.Now.ToString();
             realoadTable();
+            rePaintCharts();
         }
 
         private void realoadTable() {
             measuredData.Clear();
             ReadFile(filePath, MeasurmentList);
         }
-
 
         public static string newLines(int count) {
             return new string('\n', count);

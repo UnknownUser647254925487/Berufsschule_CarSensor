@@ -29,6 +29,9 @@ namespace CarSensor_Lernsituation {
             System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
             System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
             System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend2 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
             this.submitButton = new System.Windows.Forms.Button();
             this.Label_Speed = new System.Windows.Forms.Label();
@@ -44,14 +47,15 @@ namespace CarSensor_Lernsituation {
             this.panel1 = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
             this.MeasurmentList = new System.Windows.Forms.DataGridView();
-            this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.chartPie = new System.Windows.Forms.DataVisualization.Charting.Chart();
+            this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.timeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.speedDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.sensorDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.distanceDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.enoughDistDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.miniMesswertBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.chartLine = new System.Windows.Forms.DataVisualization.Charting.Chart();
             ((System.ComponentModel.ISupportInitialize)(this.SpeedBox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.input_left)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.input_middle)).BeginInit();
@@ -59,9 +63,10 @@ namespace CarSensor_Lernsituation {
             this.tableLayoutPanel2.SuspendLayout();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.MeasurmentList)).BeginInit();
-            this.flowLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.chartPie)).BeginInit();
+            this.tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.miniMesswertBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.chartLine)).BeginInit();
             this.SuspendLayout();
             // 
             // dateTimePicker1
@@ -78,7 +83,7 @@ namespace CarSensor_Lernsituation {
             // submitButton
             // 
             this.submitButton.Dock = System.Windows.Forms.DockStyle.Right;
-            this.submitButton.Location = new System.Drawing.Point(647, 5);
+            this.submitButton.Location = new System.Drawing.Point(651, 5);
             this.submitButton.Name = "submitButton";
             this.tableLayoutPanel2.SetRowSpan(this.submitButton, 2);
             this.submitButton.Size = new System.Drawing.Size(100, 58);
@@ -90,7 +95,7 @@ namespace CarSensor_Lernsituation {
             // Label_Speed
             // 
             this.Label_Speed.AutoSize = true;
-            this.Label_Speed.Location = new System.Drawing.Point(254, 2);
+            this.Label_Speed.Location = new System.Drawing.Point(255, 2);
             this.Label_Speed.Name = "Label_Speed";
             this.Label_Speed.Size = new System.Drawing.Size(99, 26);
             this.Label_Speed.TabIndex = 2;
@@ -99,7 +104,7 @@ namespace CarSensor_Lernsituation {
             // SpeedBox
             // 
             this.SpeedBox.DecimalPlaces = 2;
-            this.SpeedBox.Location = new System.Drawing.Point(382, 5);
+            this.SpeedBox.Location = new System.Drawing.Point(384, 5);
             this.SpeedBox.Maximum = new decimal(new int[] {
             -1593835521,
             466537709,
@@ -116,7 +121,7 @@ namespace CarSensor_Lernsituation {
             // input_left
             // 
             this.input_left.DecimalPlaces = 2;
-            this.input_left.Location = new System.Drawing.Point(382, 101);
+            this.input_left.Location = new System.Drawing.Point(384, 101);
             this.input_left.Maximum = new decimal(new int[] {
             -1593835521,
             466537709,
@@ -133,7 +138,7 @@ namespace CarSensor_Lernsituation {
             // input_middle
             // 
             this.input_middle.DecimalPlaces = 2;
-            this.input_middle.Location = new System.Drawing.Point(382, 69);
+            this.input_middle.Location = new System.Drawing.Point(384, 69);
             this.input_middle.Maximum = new decimal(new int[] {
             -1593835521,
             466537709,
@@ -150,7 +155,7 @@ namespace CarSensor_Lernsituation {
             // Label_Right
             // 
             this.Label_Right.AutoSize = true;
-            this.Label_Right.Location = new System.Drawing.Point(254, 34);
+            this.Label_Right.Location = new System.Drawing.Point(255, 34);
             this.Label_Right.Name = "Label_Right";
             this.Label_Right.Size = new System.Drawing.Size(77, 26);
             this.Label_Right.TabIndex = 0;
@@ -160,7 +165,7 @@ namespace CarSensor_Lernsituation {
             // 
             this.Label_Middle.AutoSize = true;
             this.Label_Middle.BackColor = System.Drawing.SystemColors.Control;
-            this.Label_Middle.Location = new System.Drawing.Point(254, 66);
+            this.Label_Middle.Location = new System.Drawing.Point(255, 66);
             this.Label_Middle.Name = "Label_Middle";
             this.Label_Middle.Size = new System.Drawing.Size(71, 26);
             this.Label_Middle.TabIndex = 1;
@@ -169,7 +174,7 @@ namespace CarSensor_Lernsituation {
             // Label_Left
             // 
             this.Label_Left.AutoSize = true;
-            this.Label_Left.Location = new System.Drawing.Point(254, 98);
+            this.Label_Left.Location = new System.Drawing.Point(255, 98);
             this.Label_Left.Name = "Label_Left";
             this.Label_Left.Size = new System.Drawing.Size(71, 26);
             this.Label_Left.TabIndex = 2;
@@ -178,7 +183,7 @@ namespace CarSensor_Lernsituation {
             // input_right
             // 
             this.input_right.DecimalPlaces = 2;
-            this.input_right.Location = new System.Drawing.Point(382, 37);
+            this.input_right.Location = new System.Drawing.Point(384, 37);
             this.input_right.Maximum = new decimal(new int[] {
             -1593835521,
             466537709,
@@ -220,13 +225,13 @@ namespace CarSensor_Lernsituation {
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(752, 132);
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(756, 132);
             this.tableLayoutPanel2.TabIndex = 5;
             // 
             // refreshButton
             // 
             this.refreshButton.Anchor = System.Windows.Forms.AnchorStyles.Right;
-            this.refreshButton.Location = new System.Drawing.Point(687, 69);
+            this.refreshButton.Location = new System.Drawing.Point(691, 69);
             this.refreshButton.Name = "refreshButton";
             this.refreshButton.Size = new System.Drawing.Size(60, 26);
             this.refreshButton.TabIndex = 7;
@@ -240,7 +245,7 @@ namespace CarSensor_Lernsituation {
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(752, 57);
+            this.panel1.Size = new System.Drawing.Size(756, 57);
             this.panel1.TabIndex = 6;
             // 
             // label1
@@ -248,7 +253,7 @@ namespace CarSensor_Lernsituation {
             this.label1.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(292, 19);
+            this.label1.Location = new System.Drawing.Point(294, 19);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(173, 25);
             this.label1.TabIndex = 0;
@@ -261,7 +266,6 @@ namespace CarSensor_Lernsituation {
             this.MeasurmentList.AllowUserToDeleteRows = false;
             this.MeasurmentList.AllowUserToOrderColumns = true;
             this.MeasurmentList.AutoGenerateColumns = false;
-            this.MeasurmentList.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.MeasurmentList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             this.MeasurmentList.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.timeDataGridViewTextBoxColumn,
@@ -269,31 +273,23 @@ namespace CarSensor_Lernsituation {
             this.sensorDataGridViewTextBoxColumn,
             this.distanceDataGridViewTextBoxColumn,
             this.enoughDistDataGridViewTextBoxColumn});
+            this.tableLayoutPanel1.SetColumnSpan(this.MeasurmentList, 2);
             this.MeasurmentList.DataSource = this.miniMesswertBindingSource;
             this.MeasurmentList.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.MeasurmentList.Location = new System.Drawing.Point(0, 495);
+            this.MeasurmentList.Location = new System.Drawing.Point(0, 199);
             this.MeasurmentList.Margin = new System.Windows.Forms.Padding(0);
             this.MeasurmentList.Name = "MeasurmentList";
             this.MeasurmentList.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.MeasurmentList.Size = new System.Drawing.Size(752, 46);
+            this.MeasurmentList.Size = new System.Drawing.Size(756, 199);
             this.MeasurmentList.TabIndex = 7;
             this.MeasurmentList.Tag = "Display";
             this.MeasurmentList.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.MeasurmentList_CellFormatting);
-            // 
-            // flowLayoutPanel1
-            // 
-            this.flowLayoutPanel1.Controls.Add(this.chartPie);
-            this.flowLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.flowLayoutPanel1.Location = new System.Drawing.Point(0, 189);
-            this.flowLayoutPanel1.MaximumSize = new System.Drawing.Size(0, 600);
-            this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(752, 306);
-            this.flowLayoutPanel1.TabIndex = 7;
             // 
             // chartPie
             // 
             chartArea1.Name = "ChartArea1";
             this.chartPie.ChartAreas.Add(chartArea1);
+            this.chartPie.Dock = System.Windows.Forms.DockStyle.Fill;
             legend1.Name = "Legend1";
             this.chartPie.Legends.Add(legend1);
             this.chartPie.Location = new System.Drawing.Point(3, 3);
@@ -303,9 +299,27 @@ namespace CarSensor_Lernsituation {
             series1.Legend = "Legend1";
             series1.Name = "Series1";
             this.chartPie.Series.Add(series1);
-            this.chartPie.Size = new System.Drawing.Size(300, 300);
+            this.chartPie.Size = new System.Drawing.Size(372, 193);
             this.chartPie.TabIndex = 0;
             this.chartPie.Text = "chart1";
+            this.chartPie.Titles.Add("Gesmantanzahl der Messwerte mit Genug Abstand");
+            // 
+            // tableLayoutPanel1
+            // 
+            this.tableLayoutPanel1.ColumnCount = 2;
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel1.Controls.Add(this.chartPie, 0, 0);
+            this.tableLayoutPanel1.Controls.Add(this.MeasurmentList, 0, 1);
+            this.tableLayoutPanel1.Controls.Add(this.chartLine, 1, 0);
+            this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 189);
+            this.tableLayoutPanel1.Name = "tableLayoutPanel1";
+            this.tableLayoutPanel1.RowCount = 2;
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(756, 398);
+            this.tableLayoutPanel1.TabIndex = 7;
             // 
             // timeDataGridViewTextBoxColumn
             // 
@@ -356,13 +370,31 @@ namespace CarSensor_Lernsituation {
             // 
             this.miniMesswertBindingSource.DataSource = typeof(MiniMesswert);
             // 
+            // chartLine
+            // 
+            chartArea2.Name = "ChartArea1";
+            this.chartLine.ChartAreas.Add(chartArea2);
+            this.chartLine.Dock = System.Windows.Forms.DockStyle.Fill;
+            legend2.Name = "Legend1";
+            this.chartLine.Legends.Add(legend2);
+            this.chartLine.Location = new System.Drawing.Point(381, 3);
+            this.chartLine.Name = "chartLine";
+            series2.ChartArea = "ChartArea1";
+            series2.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
+            series2.Legend = "Legend1";
+            series2.Name = "Relativ gehaltener Abstand in m";
+            this.chartLine.Series.Add(series2);
+            this.chartLine.Size = new System.Drawing.Size(372, 193);
+            this.chartLine.TabIndex = 8;
+            this.chartLine.Text = "chart1";
+            this.chartLine.Titles.Add("Relativ gehaltener Abstand nach Zeit");
+            // 
             // Window
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(752, 541);
-            this.Controls.Add(this.MeasurmentList);
-            this.Controls.Add(this.flowLayoutPanel1);
+            this.ClientSize = new System.Drawing.Size(756, 587);
+            this.Controls.Add(this.tableLayoutPanel1);
             this.Controls.Add(this.tableLayoutPanel2);
             this.Controls.Add(this.panel1);
             this.Name = "Window";
@@ -377,9 +409,10 @@ namespace CarSensor_Lernsituation {
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.MeasurmentList)).EndInit();
-            this.flowLayoutPanel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.chartPie)).EndInit();
+            this.tableLayoutPanel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.miniMesswertBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.chartLine)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -407,8 +440,9 @@ namespace CarSensor_Lernsituation {
         private DataGridViewTextBoxColumn distanceDataGridViewTextBoxColumn;
         private DataGridViewTextBoxColumn enoughDistDataGridViewTextBoxColumn;
         private BindingSource miniMesswertBindingSource;
-        private FlowLayoutPanel flowLayoutPanel1;
         private System.Windows.Forms.DataVisualization.Charting.Chart chartPie;
+        private TableLayoutPanel tableLayoutPanel1;
+        private System.Windows.Forms.DataVisualization.Charting.Chart chartLine;
     }
 }
 
