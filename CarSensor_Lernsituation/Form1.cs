@@ -13,6 +13,7 @@ using System.Diagnostics;
 using System.Runtime.InteropServices;
 using System.Drawing;
 using System.Windows.Forms.DataVisualization.Charting;
+using System.Threading;
 
 namespace CarSensor_Lernsituation {
     public partial class Window : Form {
@@ -50,7 +51,7 @@ namespace CarSensor_Lernsituation {
         public Window() {
             InitializeComponent();
             InitializeTable();
-            realoadTable();
+            reloadTable();
             paintPieChart();
             paintLineChart();
         }
@@ -84,7 +85,7 @@ namespace CarSensor_Lernsituation {
             DateTime timeStamp = new DateTime();
             try { 
                 timeStamp = DateTime.ParseExact(timestring, "yyyy-MM-dd; HH:mm:ss", System.Globalization.CultureInfo.InvariantCulture);
-            }catch (FormatException ex) {
+            }catch (Exception ex) { //don't just catch any exception, it will kill the code, thanks
                 Debug.WriteLine($"Aaaaaaaaaaaaaaaaahhhhhhhhhhh\n{ex}");
             }
             return timeStamp;
@@ -145,6 +146,7 @@ namespace CarSensor_Lernsituation {
             }
             //time updates on submit to current time
             dateTimePicker1.Text = DateTime.Now.ToString();
+            reloadTable();
             rePaintCharts();
         }
 
@@ -168,11 +170,10 @@ namespace CarSensor_Lernsituation {
 
         private void button2_Click(object sender, EventArgs e) {
             dateTimePicker1.Text = DateTime.Now.ToString();
-            realoadTable();
             rePaintCharts();
         }
 
-        private void realoadTable() {
+        private void reloadTable() {
             measuredData.Clear();
             ReadFile(filePath, MeasurmentList);
         }
