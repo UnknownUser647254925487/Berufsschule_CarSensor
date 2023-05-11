@@ -120,7 +120,7 @@ public class MiniMesswert {
         //get minimal distacne
         double[] arr = {messwert.DistanceL, messwert.DistanceM, messwert.DistanceR };
         this.distance = arr.Where(x => x != 0).Min();
-        Debug.WriteLine($"Mini DIst: {this.distance}");
+        Debug.WriteLine($"Mini Dist: {this.distance}");
         //get the associated sensor
         if(this.distance == messwert.DistanceL) {
             this.sensor = messwert.Sensor1;

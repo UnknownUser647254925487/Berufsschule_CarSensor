@@ -25,6 +25,7 @@ namespace CarSensor_Lernsituation {
 
         //Code to be executed 'before' UI is built
         private void ReadFile(String filePath, DataGridView table) {
+            checkForFile(filePath);
             StreamReader leseStream = new StreamReader(filePath);
             Debug.WriteLine("Reading:");
             int i = 0;
@@ -48,12 +49,37 @@ namespace CarSensor_Lernsituation {
         public Window() {
             InitializeComponent();
             InitializeTable();
+            realoadTable();
+            paintChart1();
         }
 
         private void InitializeTable() {
             MeasurmentList.DataSource = measuredData;
             MeasurmentList.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             MeasurmentList.AutoGenerateColumns = true;
+        }
+
+        private void paintChart1() {
+            chartPie.Titles.Add("Gesmantanzahl der Messwerte mit Genug Abstand");
+            chartPie.Series["Series1"].Points.AddXY("Genug Abstand", 20);
+            chartPie.Series["Series1"].Points.AddXY("Zu wenig Abstand", 80);
+        }
+
+        private string enoughDistNum(BindingSource bindingSouce) {
+            int enoughDist =0;
+            foreach (MiniMesswert miniMess in bindingSouce)
+            {
+                if(miniMess.Distance >= 0) { enoughDist++; }
+            }
+            return enoughDist.ToString();
+        }
+
+        private string notEnoughDistNum(BindingSource bindingSouce) {
+            int notEnoughDist = 0;
+            foreach (MiniMesswert miniMess in bindingSouce) {
+                if (miniMess.Distance < 0) { notEnoughDist++; }
+            }
+            return notEnoughDist.ToString();
         }
 
         //Submit-button
@@ -111,8 +137,14 @@ namespace CarSensor_Lernsituation {
         }
 
         private void button2_Click(object sender, EventArgs e) {
+            realoadTable();
+        }
+
+        private void realoadTable() {
+            measuredData.Clear();
             ReadFile(filePath, MeasurmentList);
         }
+
 
         public static string newLines(int count) {
             return new string('\n', count);
@@ -159,6 +191,7 @@ namespace CarSensor_Lernsituation {
 
         public static void saveToFile(string filePath, Messwert data) {
             try {
+                checkForFile(filePath);
                 //create *appending* StreamWriter
                 StreamWriter StreamWriter = new StreamWriter(filePath, true);
                 //save data to file
@@ -168,6 +201,13 @@ namespace CarSensor_Lernsituation {
             } catch (Exception exceptions) {
                 MessageBox.Show($"ooops, something went wrong processing your inputs{newLines(3)}{exceptions.Message}");
                 Debug.WriteLine(exceptions);
+            }
+        }
+
+        public static void checkForFile(String path) {
+            if (!File.Exists(path)) {
+                FileStream fs = File.Create(path,1,FileOptions.WriteThrough);
+                fs.Close();
             }
         }
     }
