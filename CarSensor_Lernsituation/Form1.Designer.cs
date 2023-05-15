@@ -406,7 +406,6 @@ namespace CarSensor_Lernsituation {
             this.Controls.Add(this.panel1);
             this.Name = "Window";
             this.Text = "Abstandsmesser";
-            this.Load += new System.EventHandler(this.Form1_Load);
             ((System.ComponentModel.ISupportInitialize)(this.SpeedBox)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.input_left)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.input_middle)).EndInit();

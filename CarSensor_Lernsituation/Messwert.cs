@@ -10,16 +10,15 @@ using static Messwert;
 
 public class Messwert
 {
-	public enum Sensor {
+    public enum Sensor {
 		sensorL, sensorM, sensorR
 	}
-
 
     private double speed, distance1, distance2, distance3;
     private Sensor sensor1, sensor2, sensor3;
     private string time;
 
-    
+    #region Constructors
     public Messwert() { }
 
     public Messwert(string time, double speed, Sensor sensor1, double distance) {
@@ -48,7 +47,9 @@ public class Messwert
         this.distance2 = distance2;
         this.distance3 = distance3;
     }
-    //Getter for all Variables
+    #endregion
+
+    #region Getters & Setters
     public double Speed {
         get { return this.speed; }
     }
@@ -75,8 +76,9 @@ public class Messwert
     public String Time {
         get { return this.time; }
     }
+    #endregion
 
-
+    #region toString
     public String toString() {
         string s = "";
         if (this.distance1 != 0) {
@@ -105,6 +107,7 @@ public class Messwert
         default: throw new Exception("Couldn't convert sensor to String");
         }
     }
+    #endregion
 
 }
 public class MiniMesswert {
@@ -112,6 +115,7 @@ public class MiniMesswert {
     private Sensor sensor;
     private string time;
 
+    #region Constructors
     public MiniMesswert() { }
 
     
@@ -135,8 +139,9 @@ public class MiniMesswert {
         this.speed = messwert.Speed;
         this.enoughDist = (this.distance - (Speed/2));
     }
+    #endregion
 
-    //getter
+    #region Getters & Setters
     public string Time {
         get { return this.time; }
     }
@@ -152,7 +157,7 @@ public class MiniMesswert {
     public double EnoughDist { 
         get { return this.enoughDist; } 
     }
-
+    #endregion
     public string toString() {
         return $"t:{this.time}; v:{this.speed}; S:{this.sensor}; d:{this.distance}; t/f: {this.enoughDist}";
 

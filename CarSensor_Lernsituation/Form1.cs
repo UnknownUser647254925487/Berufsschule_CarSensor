@@ -17,6 +17,7 @@ using System.Threading;
 
 namespace CarSensor_Lernsituation {
     public partial class Window : Form {
+        #region Setup
         readonly static Messwert.Sensor sensorL = Messwert.Sensor.sensorL, sensorM = Messwert.Sensor.sensorM, sensorR = Messwert.Sensor.sensorR;
         readonly static string directoryPath = Path.GetDirectoryName(Application.ExecutablePath);
         readonly static string filePath = Path.Combine(directoryPath, @"SensorData.txt");
@@ -24,30 +25,8 @@ namespace CarSensor_Lernsituation {
         static BindingSource measuredData = new  BindingSource();
         static string time;
         static double speed, distanceL, distanceM, distanceR;
+        #endregion
 
-
-        //Code to be executed 'before' UI is built
-        private void ReadFile(String filePath, DataGridView table) {
-            checkForFile(filePath);
-            StreamReader leseStream = new StreamReader(filePath);
-            Debug.WriteLine("Reading:");
-            int i = 0;
-            while (leseStream.Peek() > 0) {
-                String line = leseStream.ReadLine();
-                try {
-                    Messwert Mess = (messwertFromString(line));
-                    MiniMesswert miniMess = new MiniMesswert(Mess);
-                    measuredData.Add(miniMess);
-                    Debug.WriteLine("MiniMess: " + miniMess.toString());
-                    Debug.WriteLine("Mess: "+Mess.toString());
-                    i++;
-                } catch (Exception ex) {
-                    Debug.WriteLine("ReadFile:\n"+ex.ToString());
-                }
-            }
-            Debug.WriteLine($"Read: {i} lines from: {filePath}");
-            leseStream.Close();
-            }
 
         public Window() {
             InitializeComponent();
@@ -57,6 +36,7 @@ namespace CarSensor_Lernsituation {
             paintLineChart();
         }
 
+        #region Charts
         public void rePaintCharts() {
             paintPieChart();
             paintLineChart();
@@ -82,15 +62,6 @@ namespace CarSensor_Lernsituation {
             }
         }
 
-        private DateTime timeFromString(string timestring) {
-            DateTime timeStamp = new DateTime();
-            try { 
-                timeStamp = DateTime.ParseExact(timestring, "yyyy-MM-dd; HH:mm:ss", System.Globalization.CultureInfo.InvariantCulture);
-            }catch (Exception ex) { //don't just catch any exception, it will kill the code, thanks
-                Debug.WriteLine($"Aaaaaaaaaaaaaaaaahhhhhhhhhhh\n{ex}");
-            }
-            return timeStamp;
-        }
 
         private int enoughDistNum(BindingSource bindingSouce) {
             int enoughDist =0;
@@ -110,8 +81,9 @@ namespace CarSensor_Lernsituation {
             Debug.WriteLine($"Anzahl zu wenig Abstand: {notEnoughDist}");
             return notEnoughDist;
         }
+        #endregion
 
-        //Submit-button
+        #region Submit-Button
         private void button1_Click(object sender, EventArgs e) {
             time = dateTimePicker1.Text;
             speed = (double)SpeedBox.Value;
@@ -150,11 +122,9 @@ namespace CarSensor_Lernsituation {
             reloadTable();
             rePaintCharts();
         }
+        #endregion
 
-        
-        private void Form1_Load(object sender, EventArgs e) {
-
-        }
+        #region Tablepainter
         //change Colour of cells according to distance held
         private void MeasurmentList_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e) {
             if (e.ColumnIndex == 4 && e.Value != null) {
@@ -168,12 +138,15 @@ namespace CarSensor_Lernsituation {
                 }
             }
         }
+        #endregion
 
+        #region Refresh-Button
         private void button2_Click(object sender, EventArgs e) {
             dateTimePicker1.Text = DateTime.Now.ToString();
             rePaintCharts();
+            reloadTable();
         }
-
+        #endregion
         private void reloadTable() {
             measuredData.Clear();
             ReadFile(filePath, MeasurmentList);
@@ -182,6 +155,29 @@ namespace CarSensor_Lernsituation {
         public static string newLines(int count) {
             return new string('\n', count);
         }
+
+        #region File interactions
+        private void ReadFile(String filePath, DataGridView table) {
+            checkForFile(filePath);
+            StreamReader leseStream = new StreamReader(filePath);
+            Debug.WriteLine("Reading:");
+            int i = 0;
+            while (leseStream.Peek() > 0) {
+                String line = leseStream.ReadLine();
+                try {
+                    Messwert Mess = (messwertFromString(line));
+                    MiniMesswert miniMess = new MiniMesswert(Mess);
+                    measuredData.Add(miniMess);
+                    Debug.WriteLine("MiniMess: " + miniMess.toString());
+                    Debug.WriteLine("Mess: "+Mess.toString());
+                    i++;
+                } catch (Exception ex) {
+                    Debug.WriteLine("ReadFile:\n"+ex.ToString());
+                }
+            }
+            Debug.WriteLine($"Read: {i} lines from: {filePath}");
+            leseStream.Close();
+            }
 
         public static Messwert messwertFromString(string str) {
             String time;
@@ -221,6 +217,15 @@ namespace CarSensor_Lernsituation {
                 throw new ArgumentException("Error on converting the sensor");
             }
         }
+        private DateTime timeFromString(string timestring) {
+            DateTime timeStamp = new DateTime();
+            try { 
+                timeStamp = DateTime.ParseExact(timestring, "yyyy-MM-dd; HH:mm:ss", System.Globalization.CultureInfo.InvariantCulture);
+            }catch (Exception ex) { //don't just catch any exception, it will kill the code, thanks
+                Debug.WriteLine($"Aaaaaaaaaaaaaaaaahhhhhhhhhhh\n{ex}");
+            }
+            return timeStamp;
+        }
 
         public static void saveToFile(string filePath, Messwert data) {
             try {
@@ -243,5 +248,6 @@ namespace CarSensor_Lernsituation {
                 fs.Close();
             }
         }
+        #endregion
     }
 }
