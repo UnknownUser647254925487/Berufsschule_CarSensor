@@ -134,8 +134,8 @@ namespace CarSensor_Lernsituation {
         #region Refresh-Button
         private void button2_Click(object sender, EventArgs e) {
             dateTimePicker1.Text = DateTime.Now.ToString();
-            rePaintCharts();
             reloadTable();
+            rePaintCharts();
         }
         #endregion
 
@@ -152,6 +152,11 @@ namespace CarSensor_Lernsituation {
                     e.CellStyle.BackColor = Color.FromArgb(190,250,180);
                 }
             }
+        }
+        #endregion
+        #region Delete-Button
+        private void button1_Click_1(object sender, EventArgs e) {
+            clearFile(filePath);
         }
         #endregion
         private void reloadTable() {
@@ -185,7 +190,13 @@ namespace CarSensor_Lernsituation {
             Debug.WriteLine($"Read: {i} lines from: {filePath}");
             leseStream.Close();
             }
-        
+
+        public void clearFile(String FilePath) {
+            StreamWriter sw = new StreamWriter(FilePath);
+            sw.Write("");
+            sw.Close();
+        }
+
         public static Messwert messwertFromString(string str) {
             String time;
             double speed, distance1, distance2, distance3;

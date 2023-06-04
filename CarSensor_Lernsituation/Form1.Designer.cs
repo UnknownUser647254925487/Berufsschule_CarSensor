@@ -27,14 +27,14 @@ namespace CarSensor_Lernsituation {
         /// </summary>
         private void InitializeComponent() {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.Title title1 = new System.Windows.Forms.DataVisualization.Charting.Title();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend2 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.Title title2 = new System.Windows.Forms.DataVisualization.Charting.Title();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea3 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend3 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series3 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Title title3 = new System.Windows.Forms.DataVisualization.Charting.Title();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea4 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend4 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series4 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Title title4 = new System.Windows.Forms.DataVisualization.Charting.Title();
             this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
             this.submitButton = new System.Windows.Forms.Button();
             this.Label_Speed = new System.Windows.Forms.Label();
@@ -54,11 +54,7 @@ namespace CarSensor_Lernsituation {
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.chartLine = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.miniMesswertBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.enoughDistDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.distanceDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.sensorDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.speedDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.timeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.button1 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.SpeedBox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.input_left)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.input_middle)).BeginInit();
@@ -219,6 +215,7 @@ namespace CarSensor_Lernsituation {
             this.tableLayoutPanel2.Controls.Add(this.SpeedBox, 2, 0);
             this.tableLayoutPanel2.Controls.Add(this.submitButton, 3, 0);
             this.tableLayoutPanel2.Controls.Add(this.refreshButton, 3, 2);
+            this.tableLayoutPanel2.Controls.Add(this.button1, 0, 2);
             this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Top;
             this.tableLayoutPanel2.Location = new System.Drawing.Point(0, 57);
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
@@ -268,14 +265,7 @@ namespace CarSensor_Lernsituation {
             // 
             this.MeasurmentList.AllowUserToDeleteRows = false;
             this.MeasurmentList.AllowUserToOrderColumns = true;
-            this.MeasurmentList.AutoGenerateColumns = false;
             this.MeasurmentList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
-            this.MeasurmentList.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.timeDataGridViewTextBoxColumn,
-            this.speedDataGridViewTextBoxColumn,
-            this.sensorDataGridViewTextBoxColumn,
-            this.distanceDataGridViewTextBoxColumn,
-            this.enoughDistDataGridViewTextBoxColumn});
             this.tableLayoutPanel1.SetColumnSpan(this.MeasurmentList, 2);
             this.MeasurmentList.Dock = System.Windows.Forms.DockStyle.Fill;
             this.MeasurmentList.Location = new System.Drawing.Point(0, 199);
@@ -289,24 +279,24 @@ namespace CarSensor_Lernsituation {
             // 
             // chartPie
             // 
-            chartArea1.Name = "ChartArea1";
-            this.chartPie.ChartAreas.Add(chartArea1);
+            chartArea3.Name = "ChartArea1";
+            this.chartPie.ChartAreas.Add(chartArea3);
             this.chartPie.Dock = System.Windows.Forms.DockStyle.Fill;
-            legend1.Name = "Legend1";
-            this.chartPie.Legends.Add(legend1);
+            legend3.Name = "Legend1";
+            this.chartPie.Legends.Add(legend3);
             this.chartPie.Location = new System.Drawing.Point(3, 3);
             this.chartPie.Name = "chartPie";
-            series1.ChartArea = "ChartArea1";
-            series1.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Pie;
-            series1.Legend = "Legend1";
-            series1.Name = "Series1";
-            this.chartPie.Series.Add(series1);
+            series3.ChartArea = "ChartArea1";
+            series3.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Pie;
+            series3.Legend = "Legend1";
+            series3.Name = "Series1";
+            this.chartPie.Series.Add(series3);
             this.chartPie.Size = new System.Drawing.Size(372, 193);
             this.chartPie.TabIndex = 0;
             this.chartPie.Text = "chart1";
-            title1.Name = "Title1";
-            title1.Text = "Gesmantanzahl der Messwerte mit Genug Abstand";
-            this.chartPie.Titles.Add(title1);
+            title3.Name = "Title1";
+            title3.Text = "Gesmantanzahl der Messwerte mit Genug Abstand";
+            this.chartPie.Titles.Add(title3);
             // 
             // tableLayoutPanel1
             // 
@@ -327,74 +317,38 @@ namespace CarSensor_Lernsituation {
             // 
             // chartLine
             // 
-            chartArea2.Name = "ChartArea1";
-            this.chartLine.ChartAreas.Add(chartArea2);
+            chartArea4.Name = "ChartArea1";
+            this.chartLine.ChartAreas.Add(chartArea4);
             this.chartLine.Dock = System.Windows.Forms.DockStyle.Fill;
-            legend2.Name = "Legend1";
-            this.chartLine.Legends.Add(legend2);
+            legend4.Name = "Legend1";
+            this.chartLine.Legends.Add(legend4);
             this.chartLine.Location = new System.Drawing.Point(381, 3);
             this.chartLine.Name = "chartLine";
-            series2.ChartArea = "ChartArea1";
-            series2.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
-            series2.Legend = "Legend1";
-            series2.Name = "Relativ gehaltener Abstand in m";
-            this.chartLine.Series.Add(series2);
+            series4.ChartArea = "ChartArea1";
+            series4.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
+            series4.Legend = "Legend1";
+            series4.Name = "Relativ gehaltener Abstand in m";
+            this.chartLine.Series.Add(series4);
             this.chartLine.Size = new System.Drawing.Size(372, 193);
             this.chartLine.TabIndex = 8;
             this.chartLine.Text = "chart1";
-            title2.Name = "Title1";
-            title2.Text = "Abstand/Soll-Abstand nach Zeit";
-            this.chartLine.Titles.Add(title2);
+            title4.Name = "Title1";
+            title4.Text = "Abstand/Soll-Abstand nach Zeit";
+            this.chartLine.Titles.Add(title4);
             // 
             // miniMesswertBindingSource
             // 
             this.miniMesswertBindingSource.DataSource = typeof(MiniMesswert);
             // 
-            // enoughDistDataGridViewTextBoxColumn
+            // button1
             // 
-            this.enoughDistDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.enoughDistDataGridViewTextBoxColumn.DataPropertyName = "EnoughDist";
-            this.enoughDistDataGridViewTextBoxColumn.FillWeight = 100.3514F;
-            this.enoughDistDataGridViewTextBoxColumn.HeaderText = "EnoughDist";
-            this.enoughDistDataGridViewTextBoxColumn.Name = "enoughDistDataGridViewTextBoxColumn";
-            this.enoughDistDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // distanceDataGridViewTextBoxColumn
-            // 
-            this.distanceDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.distanceDataGridViewTextBoxColumn.DataPropertyName = "Distance";
-            this.distanceDataGridViewTextBoxColumn.FillWeight = 99.52782F;
-            this.distanceDataGridViewTextBoxColumn.HeaderText = "Distance";
-            this.distanceDataGridViewTextBoxColumn.Name = "distanceDataGridViewTextBoxColumn";
-            this.distanceDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // sensorDataGridViewTextBoxColumn
-            // 
-            this.sensorDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.sensorDataGridViewTextBoxColumn.DataPropertyName = "Sensor";
-            this.sensorDataGridViewTextBoxColumn.FillWeight = 100.3285F;
-            this.sensorDataGridViewTextBoxColumn.HeaderText = "Sensor";
-            this.sensorDataGridViewTextBoxColumn.Name = "sensorDataGridViewTextBoxColumn";
-            this.sensorDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // speedDataGridViewTextBoxColumn
-            // 
-            this.speedDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.speedDataGridViewTextBoxColumn.DataPropertyName = "Speed";
-            this.speedDataGridViewTextBoxColumn.FillWeight = 99.4995F;
-            this.speedDataGridViewTextBoxColumn.HeaderText = "Speed";
-            this.speedDataGridViewTextBoxColumn.Name = "speedDataGridViewTextBoxColumn";
-            this.speedDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // timeDataGridViewTextBoxColumn
-            // 
-            this.timeDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.timeDataGridViewTextBoxColumn.DataPropertyName = "Time";
-            this.timeDataGridViewTextBoxColumn.FillWeight = 100.2928F;
-            this.timeDataGridViewTextBoxColumn.HeaderText = "Time";
-            this.timeDataGridViewTextBoxColumn.Name = "timeDataGridViewTextBoxColumn";
-            this.timeDataGridViewTextBoxColumn.ReadOnly = true;
-            this.timeDataGridViewTextBoxColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
+            this.button1.Location = new System.Drawing.Point(5, 69);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(23, 23);
+            this.button1.TabIndex = 8;
+            this.button1.Text = "💀";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click_1);
             // 
             // Window
             // 
@@ -449,6 +403,7 @@ namespace CarSensor_Lernsituation {
         private DataGridViewTextBoxColumn sensorDataGridViewTextBoxColumn;
         private DataGridViewTextBoxColumn distanceDataGridViewTextBoxColumn;
         private DataGridViewTextBoxColumn enoughDistDataGridViewTextBoxColumn;
+        private Button button1;
     }
 }
 
