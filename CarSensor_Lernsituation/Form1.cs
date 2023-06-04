@@ -14,6 +14,8 @@ using System.Runtime.InteropServices;
 using System.Drawing;
 using System.Windows.Forms.DataVisualization.Charting;
 using System.Threading;
+using System.Linq;
+using System.ComponentModel;
 
 namespace CarSensor_Lernsituation {
     public partial class Window : Form {
@@ -22,7 +24,7 @@ namespace CarSensor_Lernsituation {
         readonly static string directoryPath = Path.GetDirectoryName(Application.ExecutablePath);
         readonly static string filePath = Path.Combine(directoryPath, @"SensorData.txt");
         readonly static string dataLine = "Relativ gehaltener Abstand in m";
-        static BindingSource measuredData = new  BindingSource();
+        static BindingList<MiniMesswert> measuredData = new BindingList<MiniMesswert>();
         static string time;
         static double speed, distanceL, distanceM, distanceR;
         #endregion
@@ -63,7 +65,7 @@ namespace CarSensor_Lernsituation {
         }
 
 
-        private int enoughDistNum(BindingSource bindingSouce) {
+        private int enoughDistNum(BindingList<MiniMesswert> bindingSouce) {
             int enoughDist =0;
             foreach (MiniMesswert miniMess in bindingSouce)
             {
@@ -73,7 +75,7 @@ namespace CarSensor_Lernsituation {
             return enoughDist;
         }
 
-        private int notEnoughDistNum(BindingSource bindingSouce) {
+        private int notEnoughDistNum(BindingList<MiniMesswert> bindingSouce) {
             int notEnoughDist = 0;
             foreach (MiniMesswert miniMess in bindingSouce) {
                 if (miniMess.EnoughDist < 0) { notEnoughDist++; }
@@ -119,8 +121,21 @@ namespace CarSensor_Lernsituation {
             }
             //time updates on submit to current time
             dateTimePicker1.Text = DateTime.Now.ToString();
+            SpeedBox.Value = 0;
+            input_left.Value = 0;
+            input_middle.Value = 0;
+            input_right.Value = 0;
             reloadTable();
             rePaintCharts();
+        }
+        #endregion
+
+
+        #region Refresh-Button
+        private void button2_Click(object sender, EventArgs e) {
+            dateTimePicker1.Text = DateTime.Now.ToString();
+            rePaintCharts();
+            reloadTable();
         }
         #endregion
 
@@ -137,14 +152,6 @@ namespace CarSensor_Lernsituation {
                     e.CellStyle.BackColor = Color.FromArgb(190,250,180);
                 }
             }
-        }
-        #endregion
-
-        #region Refresh-Button
-        private void button2_Click(object sender, EventArgs e) {
-            dateTimePicker1.Text = DateTime.Now.ToString();
-            rePaintCharts();
-            reloadTable();
         }
         #endregion
         private void reloadTable() {
@@ -178,7 +185,7 @@ namespace CarSensor_Lernsituation {
             Debug.WriteLine($"Read: {i} lines from: {filePath}");
             leseStream.Close();
             }
-
+        
         public static Messwert messwertFromString(string str) {
             String time;
             double speed, distance1, distance2, distance3;
