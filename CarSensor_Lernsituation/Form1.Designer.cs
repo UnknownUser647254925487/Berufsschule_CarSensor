@@ -27,14 +27,14 @@ namespace CarSensor_Lernsituation {
         /// </summary>
         private void InitializeComponent() {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea3 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend3 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series3 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.Title title3 = new System.Windows.Forms.DataVisualization.Charting.Title();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea4 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend4 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series4 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.Title title4 = new System.Windows.Forms.DataVisualization.Charting.Title();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Title title1 = new System.Windows.Forms.DataVisualization.Charting.Title();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend2 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Title title2 = new System.Windows.Forms.DataVisualization.Charting.Title();
             this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
             this.submitButton = new System.Windows.Forms.Button();
             this.Label_Speed = new System.Windows.Forms.Label();
@@ -53,8 +53,8 @@ namespace CarSensor_Lernsituation {
             this.chartPie = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.chartLine = new System.Windows.Forms.DataVisualization.Charting.Chart();
-            this.miniMesswertBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.button1 = new System.Windows.Forms.Button();
+            this.miniMesswertBindingSource = new System.Windows.Forms.BindingSource(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.SpeedBox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.input_left)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.input_middle)).BeginInit();
@@ -156,9 +156,10 @@ namespace CarSensor_Lernsituation {
             this.Label_Right.AutoSize = true;
             this.Label_Right.Location = new System.Drawing.Point(255, 34);
             this.Label_Right.Name = "Label_Right";
-            this.Label_Right.Size = new System.Drawing.Size(77, 26);
+            this.Label_Right.Size = new System.Drawing.Size(104, 26);
             this.Label_Right.TabIndex = 0;
-            this.Label_Right.Text = "Sensor Rechts\r\nAbstand in m:";
+            this.Label_Right.Text = "Front-Sensor Rechts\r\nAbstand in m:";
+            this.Label_Right.Click += new System.EventHandler(this.Label_Right_Click);
             // 
             // Label_Middle
             // 
@@ -166,18 +167,18 @@ namespace CarSensor_Lernsituation {
             this.Label_Middle.BackColor = System.Drawing.SystemColors.Control;
             this.Label_Middle.Location = new System.Drawing.Point(255, 66);
             this.Label_Middle.Name = "Label_Middle";
-            this.Label_Middle.Size = new System.Drawing.Size(71, 26);
+            this.Label_Middle.Size = new System.Drawing.Size(93, 26);
             this.Label_Middle.TabIndex = 1;
-            this.Label_Middle.Text = "Sensor Mitte\r\nAbstand in m:";
+            this.Label_Middle.Text = "Front-Sensor Mitte\r\nAbstand in m:";
             // 
             // Label_Left
             // 
             this.Label_Left.AutoSize = true;
             this.Label_Left.Location = new System.Drawing.Point(255, 98);
             this.Label_Left.Name = "Label_Left";
-            this.Label_Left.Size = new System.Drawing.Size(71, 26);
+            this.Label_Left.Size = new System.Drawing.Size(95, 26);
             this.Label_Left.TabIndex = 2;
-            this.Label_Left.Text = "Sensor Links\r\nAbstand in m:";
+            this.Label_Left.Text = "Front-Sensor Links\r\nAbstand in m:";
             // 
             // input_right
             // 
@@ -279,24 +280,24 @@ namespace CarSensor_Lernsituation {
             // 
             // chartPie
             // 
-            chartArea3.Name = "ChartArea1";
-            this.chartPie.ChartAreas.Add(chartArea3);
+            chartArea1.Name = "ChartArea1";
+            this.chartPie.ChartAreas.Add(chartArea1);
             this.chartPie.Dock = System.Windows.Forms.DockStyle.Fill;
-            legend3.Name = "Legend1";
-            this.chartPie.Legends.Add(legend3);
+            legend1.Name = "Legend1";
+            this.chartPie.Legends.Add(legend1);
             this.chartPie.Location = new System.Drawing.Point(3, 3);
             this.chartPie.Name = "chartPie";
-            series3.ChartArea = "ChartArea1";
-            series3.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Pie;
-            series3.Legend = "Legend1";
-            series3.Name = "Series1";
-            this.chartPie.Series.Add(series3);
+            series1.ChartArea = "ChartArea1";
+            series1.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Pie;
+            series1.Legend = "Legend1";
+            series1.Name = "Series1";
+            this.chartPie.Series.Add(series1);
             this.chartPie.Size = new System.Drawing.Size(372, 193);
             this.chartPie.TabIndex = 0;
             this.chartPie.Text = "chart1";
-            title3.Name = "Title1";
-            title3.Text = "Gesmantanzahl der Messwerte mit Genug Abstand";
-            this.chartPie.Titles.Add(title3);
+            title1.Name = "Title1";
+            title1.Text = "Gesmantanzahl der Messwerte mit Genug Abstand";
+            this.chartPie.Titles.Add(title1);
             // 
             // tableLayoutPanel1
             // 
@@ -317,28 +318,24 @@ namespace CarSensor_Lernsituation {
             // 
             // chartLine
             // 
-            chartArea4.Name = "ChartArea1";
-            this.chartLine.ChartAreas.Add(chartArea4);
+            chartArea2.Name = "ChartArea1";
+            this.chartLine.ChartAreas.Add(chartArea2);
             this.chartLine.Dock = System.Windows.Forms.DockStyle.Fill;
-            legend4.Name = "Legend1";
-            this.chartLine.Legends.Add(legend4);
+            legend2.Name = "Legend1";
+            this.chartLine.Legends.Add(legend2);
             this.chartLine.Location = new System.Drawing.Point(381, 3);
             this.chartLine.Name = "chartLine";
-            series4.ChartArea = "ChartArea1";
-            series4.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
-            series4.Legend = "Legend1";
-            series4.Name = "Relativ gehaltener Abstand in m";
-            this.chartLine.Series.Add(series4);
+            series2.ChartArea = "ChartArea1";
+            series2.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
+            series2.Legend = "Legend1";
+            series2.Name = "Relativ gehaltener Abstand in m";
+            this.chartLine.Series.Add(series2);
             this.chartLine.Size = new System.Drawing.Size(372, 193);
             this.chartLine.TabIndex = 8;
             this.chartLine.Text = "chart1";
-            title4.Name = "Title1";
-            title4.Text = "Abstand/Soll-Abstand nach Zeit";
-            this.chartLine.Titles.Add(title4);
-            // 
-            // miniMesswertBindingSource
-            // 
-            this.miniMesswertBindingSource.DataSource = typeof(MiniMesswert);
+            title2.Name = "Title1";
+            title2.Text = "Abstand/Soll-Abstand nach Zeit\n(Wenn <0 zu wenig Abstand)";
+            this.chartLine.Titles.Add(title2);
             // 
             // button1
             // 
@@ -349,6 +346,10 @@ namespace CarSensor_Lernsituation {
             this.button1.Text = "💀";
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click_1);
+            // 
+            // miniMesswertBindingSource
+            // 
+            this.miniMesswertBindingSource.DataSource = typeof(MiniMesswert);
             // 
             // Window
             // 

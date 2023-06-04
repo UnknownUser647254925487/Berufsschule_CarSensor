@@ -224,6 +224,10 @@ namespace CarSensor_Lernsituation {
             return lineMesswert;
         }
 
+        private void Label_Right_Click(object sender, EventArgs e) {
+
+        }
+
         public static Messwert.Sensor sensorFromString(string str){
             if (str.Equals("SL")) { return Messwert.Sensor.sensorL; }
             else if (str.Equals("SM")) { return Messwert.Sensor.sensorM; }
