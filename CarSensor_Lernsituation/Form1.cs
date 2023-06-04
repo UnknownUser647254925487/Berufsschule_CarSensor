@@ -27,7 +27,6 @@ namespace CarSensor_Lernsituation {
         static BindingList<MiniMesswert> measuredData = new BindingList<MiniMesswert>();
         static string time;
         static double speed, distanceL, distanceM, distanceR;
-        #endregion
 
 
         public Window() {
@@ -37,6 +36,7 @@ namespace CarSensor_Lernsituation {
             paintPieChart();
             paintLineChart();
         }
+        #endregion
 
         #region Charts
         public void rePaintCharts() {
@@ -130,17 +130,27 @@ namespace CarSensor_Lernsituation {
         }
         #endregion
 
-
         #region Refresh-Button
         private void button2_Click(object sender, EventArgs e) {
             dateTimePicker1.Text = DateTime.Now.ToString();
             reloadTable();
             rePaintCharts();
         }
+
+        private void reloadTable() {
+            measuredData.Clear();
+            ReadFile(filePath, MeasurmentList);
+        }
         #endregion
 
+        #region Delete-Button
+        private void button1_Click_1(object sender, EventArgs e) {
+            clearFile(filePath);
+        }
+        #endregion
+        
         #region Tablepainter
-        //change Colour of cells according to distance held
+        //change background-colour of cells according to distance held
         private void MeasurmentList_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e) {
             if (e.ColumnIndex == 4 && e.Value != null) {
                 double colorDist = (double)e.Value;
@@ -154,19 +164,6 @@ namespace CarSensor_Lernsituation {
             }
         }
         #endregion
-        #region Delete-Button
-        private void button1_Click_1(object sender, EventArgs e) {
-            clearFile(filePath);
-        }
-        #endregion
-        private void reloadTable() {
-            measuredData.Clear();
-            ReadFile(filePath, MeasurmentList);
-        }
-
-        public static string newLines(int count) {
-            return new string('\n', count);
-        }
 
         #region File interactions
         private void ReadFile(String filePath, DataGridView table) {
@@ -265,6 +262,13 @@ namespace CarSensor_Lernsituation {
                 FileStream fs = File.Create(path,1,FileOptions.WriteThrough);
                 fs.Close();
             }
+        }
+        #endregion
+
+
+        #region random funtions
+        public static string newLines(int count) {
+            return new string('\n', count);
         }
         #endregion
     }
