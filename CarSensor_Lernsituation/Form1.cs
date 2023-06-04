@@ -16,6 +16,7 @@ using System.Windows.Forms.DataVisualization.Charting;
 using System.Threading;
 using System.Linq;
 using System.ComponentModel;
+using KGySoft.ComponentModel;
 
 namespace CarSensor_Lernsituation {
     public partial class Window : Form {
@@ -27,6 +28,8 @@ namespace CarSensor_Lernsituation {
         static BindingList<MiniMesswert> measuredData = new BindingList<MiniMesswert>();
         static string time;
         static double speed, distanceL, distanceM, distanceR;
+        SortableBindingList<MiniMesswert> sortMeasuredData = new SortableBindingList<MiniMesswert>();
+        static bool sortListAscending = true;
         #endregion
 
 
@@ -45,7 +48,8 @@ namespace CarSensor_Lernsituation {
         }
 
         private void InitializeTable() {
-            MeasurmentList.DataSource = measuredData;
+            sortMeasuredData = new SortableBindingList<MiniMesswert>(measuredData);
+            MeasurmentList.DataSource = sortMeasuredData;
             MeasurmentList.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             MeasurmentList.AutoGenerateColumns = true;
         }
@@ -138,7 +142,7 @@ namespace CarSensor_Lernsituation {
             reloadTable();
         }
         #endregion
-
+        /*
         #region Tablepainter
         //change Colour of cells according to distance held
         private void MeasurmentList_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e) {
@@ -154,9 +158,12 @@ namespace CarSensor_Lernsituation {
             }
         }
         #endregion
+        */
         private void reloadTable() {
             measuredData.Clear();
+            sortMeasuredData.Clear();
             ReadFile(filePath, MeasurmentList);
+            sortMeasuredData = new SortableBindingList<MiniMesswert>(measuredData);
         }
 
         public static string newLines(int count) {
@@ -185,7 +192,35 @@ namespace CarSensor_Lernsituation {
             Debug.WriteLine($"Read: {i} lines from: {filePath}");
             leseStream.Close();
             }
-        
+        #region Table sorting (code from MS)
+        //source: https://stackoverflow.com/questions/50859745/vs-make-bindinglist-sortable
+        private void MeasurmentList_ColumnHeaderMouseDoubleClick(object sender, DataGridViewCellMouseEventArgs e) {
+            
+            switch (e.ColumnIndex) {
+                case 0:
+                    sortMeasuredData.ApplySort("Time", sortListAscending ? ListSortDirection.Ascending : ListSortDirection.Descending);
+                    break;
+                case 1:
+                    sortMeasuredData.ApplySort("Speed", sortListAscending ? ListSortDirection.Ascending : ListSortDirection.Descending);
+                    break;
+                case 2:
+                    sortMeasuredData.ApplySort("Sensor", sortListAscending ? ListSortDirection.Ascending : ListSortDirection.Descending);
+                    break;
+                case 3:
+                    sortMeasuredData.ApplySort("Distance", sortListAscending ? ListSortDirection.Ascending : ListSortDirection.Descending);
+                    break;
+                case 4:
+                    sortMeasuredData.ApplySort("EnoughDistance", sortListAscending ? ListSortDirection.Ascending : ListSortDirection.Descending);
+                    break;
+                default: 
+                    throw new NotImplementedException("Can't sort this column (index out of range)");
+            }
+        }
+
+
+        #endregion
+
+
         public static Messwert messwertFromString(string str) {
             String time;
             double speed, distance1, distance2, distance3;

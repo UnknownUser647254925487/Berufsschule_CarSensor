@@ -42,3 +42,6 @@ C:\Users\josia\OneDrive\Desktop\Development\ITschule\Lernsituation\Berufsschule_
 C:\Users\josia\OneDrive\Desktop\Development\ITschule\Lernsituation\Berufsschule_CarSensor\CarSensor_Lernsituation\obj\Debug\CarSensor_Lernsituation.csproj.CoreCompileInputs.cache
 C:\Users\josia\OneDrive\Desktop\Development\ITschule\Lernsituation\Berufsschule_CarSensor\CarSensor_Lernsituation\obj\Debug\CarSensor_Lernsituation.exe
 C:\Users\josia\OneDrive\Desktop\Development\ITschule\Lernsituation\Berufsschule_CarSensor\CarSensor_Lernsituation\obj\Debug\CarSensor_Lernsituation.pdb
+C:\Users\Andreas\OneDrive\Dokumente\_Berufsschule\BfK-S\Berufsschule_CarSensor\CarSensor_Lernsituation\bin\Debug\KGySoft.CoreLibraries.dll
+C:\Users\Andreas\OneDrive\Dokumente\_Berufsschule\BfK-S\Berufsschule_CarSensor\CarSensor_Lernsituation\bin\Debug\KGySoft.CoreLibraries.xml
+C:\Users\Andreas\OneDrive\Dokumente\_Berufsschule\BfK-S\Berufsschule_CarSensor\CarSensor_Lernsituation\obj\Debug\CarSensor_Lernsituation.csproj.CopyComplete

@@ -111,9 +111,11 @@ public class Messwert
 
 }
 public class MiniMesswert {
-    private double speed, distance, enoughDist;
-    private Sensor sensor;
-    private string time;
+    public double Speed { get; set; }
+    public double Distance { get; set; }
+    public double EnoughDist { get; set; }
+    public Sensor Sensor { get; set; }
+    public string Time { get; set; }
 
     #region Constructors
     public MiniMesswert() { }
@@ -123,43 +125,27 @@ public class MiniMesswert {
         //choose minimal Distance and Sensor
         //get minimal distacne
         double[] arr = {messwert.DistanceL, messwert.DistanceM, messwert.DistanceR };
-        this.distance = arr.Where(x => x != 0).Min();
-        Debug.WriteLine($"Mini Dist: {this.distance}");
+        this.Distance = arr.Where(x => x != 0).Min();
+        Debug.WriteLine($"Mini Dist: {this.Distance}");
         //get the associated sensor
-        if(this.distance == messwert.DistanceL) {
-            this.sensor = messwert.Sensor1;
-        }else if (this.distance == messwert.DistanceM) {
-            this.sensor = messwert.Sensor2;
-        }else if (this.distance == messwert.DistanceR) {
-            this.sensor = messwert.Sensor3;
+        if(this.Distance == messwert.DistanceL) {
+            this.Sensor = messwert.Sensor1;
+        }else if (this.Distance == messwert.DistanceM) {
+            this.Sensor = messwert.Sensor2;
+        }else if (this.Distance == messwert.DistanceR) {
+            this.Sensor = messwert.Sensor3;
         } else { throw new Exception("Fooooking Stooooopid"); }
 
 
-        this.time = messwert.Time;
-        this.speed = messwert.Speed;
-        this.enoughDist = (this.distance - (Speed/2));
+        this.Time = messwert.Time;
+        this.Speed = messwert.Speed;
+        this.EnoughDist = (this.Distance - (Speed/2));
     }
     #endregion
 
-    #region Getters & Setters
-    public string Time {
-        get { return this.time; }
-    }
-    public double Speed {
-        get  { return this.speed; }
-    }
-    public Sensor Sensor { 
-        get  { return this.sensor; } 
-    }
-    public double Distance { 
-        get  { return this.distance; } 
-    }
-    public double EnoughDist { 
-        get { return this.enoughDist; } 
-    }
-    #endregion
+    
     public string toString() {
-        return $"t:{this.time}; v:{this.speed}; S:{this.sensor}; d:{this.distance}; t/f: {this.enoughDist}";
+        return $"t:{this.Time}; v:{this.Speed}; S:{this.Sensor}; d:{this.Distance}; t/f: {this.EnoughDist}";
 
     }
 }
