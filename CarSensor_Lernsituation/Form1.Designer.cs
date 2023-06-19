@@ -159,7 +159,6 @@ namespace CarSensor_Lernsituation {
             this.Label_Right.Size = new System.Drawing.Size(104, 26);
             this.Label_Right.TabIndex = 0;
             this.Label_Right.Text = "Front-Sensor Rechts\r\nAbstand in m:";
-            this.Label_Right.Click += new System.EventHandler(this.Label_Right_Click);
             // 
             // Label_Middle
             // 
