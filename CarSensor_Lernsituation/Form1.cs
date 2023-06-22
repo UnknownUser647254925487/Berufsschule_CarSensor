@@ -16,6 +16,7 @@ using System.Windows.Forms.DataVisualization.Charting;
 using System.Threading;
 using System.Linq;
 using System.ComponentModel;
+using System.Data;
 
 namespace CarSensor_Lernsituation {
     public partial class Window : Form {
@@ -25,16 +26,20 @@ namespace CarSensor_Lernsituation {
         readonly static string filePath = Path.Combine(directoryPath, @"SensorData.txt");
         readonly static string dataLine = "Relativ gehaltener Abstand in m";
         static BindingList<MiniMesswert> measuredData = new BindingList<MiniMesswert>();
+        static DataTable measureTable = new DataTable();
         static string time;
         static double speed, distanceL, distanceM, distanceR;
+        static readonly bool useTable = true;
 
 
         public Window() {
             InitializeComponent();
             InitializeTable();
+            initializeDataTable();
             reloadTable();
             paintPieChart();
             paintLineChart();
+            populateDataTable();
         }
         #endregion
 
@@ -45,9 +50,13 @@ namespace CarSensor_Lernsituation {
         }
 
         private void InitializeTable() {
-            MeasurmentList.DataSource = measuredData;
+            if (useTable) {
+                MeasurmentList.DataSource = measureTable;
+            } else {
+                MeasurmentList.DataSource = measuredData;
+                MeasurmentList.AutoGenerateColumns = true;
+            }
             MeasurmentList.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-            MeasurmentList.AutoGenerateColumns = true;
         }
 
         private void paintPieChart() {
@@ -116,6 +125,7 @@ namespace CarSensor_Lernsituation {
                 saveToFile(filePath, data);
                 //add new 'Object' to the List of already exiting ones
                 measuredData.Add(new MiniMesswert(data));
+                addToDataTable(new MiniMesswert(data));
             }catch (Exception ex) { 
                 Debug.WriteLine(ex);
             }
@@ -127,6 +137,60 @@ namespace CarSensor_Lernsituation {
             input_right.Value = 0;
             reloadTable();
             rePaintCharts();
+        }
+        #endregion
+
+        #region DataTable
+        public void initializeDataTable() {
+            DataColumn column;
+            
+            // Create Time-DataColumn, set DataType, ColumnName and add to DataTable.
+            column = new DataColumn();
+            column.DataType = System.Type.GetType("System.String");
+            column.ColumnName = "Time";
+            column.ReadOnly = true;
+            column.Unique = true;
+            measureTable.Columns.Add(column);
+            // Create Speed-DataColumn, set DataType, ColumnName and add to DataTable.
+            column = new DataColumn();
+            column.DataType = System.Type.GetType("System.Double");
+            column.ColumnName = "Speed";
+            column.ReadOnly = true;
+            measureTable.Columns.Add(column);
+            // Create Sensor-DataColumn, set DataType, ColumnName and add to DataTable.
+            column = new DataColumn();
+            column.DataType = System.Type.GetType("System.String");
+            column.ColumnName = "Sensor";
+            column.ReadOnly = true;
+            measureTable.Columns.Add(column);
+            // Create Distance-DataColumn, set DataType, ColumnName and add to DataTable.
+            column = new DataColumn();
+            column.DataType = System.Type.GetType("System.Double");
+            column.ColumnName = "Distance";
+            column.ReadOnly = true;
+            measureTable.Columns.Add(column);
+            // Create RelDistance-DataColumn, set DataType, ColumnName and add to DataTable.
+            column = new DataColumn();
+            column.DataType = System.Type.GetType("System.Double");
+            column.ColumnName = "Relative Distance";
+            column.ReadOnly = true;
+            measureTable.Columns.Add(column);
+            }
+
+        void populateDataTable() {
+            foreach (MiniMesswert mess in measuredData)  {
+                addToDataTable(mess);
+            }
+        }
+        void addToDataTable(MiniMesswert mess) {
+            DataRow row;
+            row = measureTable.NewRow();
+            row["Time"] = mess.Time;
+            row["Speed"] = mess.Speed;
+            row["Sensor"] = mess.Sensor;
+            row["Distance"] = mess.Distance;
+            row["Relative Distance"] = mess.EnoughDist;
+            measureTable.Rows.Add(row);
         }
         #endregion
 
@@ -224,9 +288,7 @@ namespace CarSensor_Lernsituation {
             return lineMesswert;
         }
 
-        private void Label_Right_Click(object sender, EventArgs e) {
 
-        }
 
         public static Messwert.Sensor sensorFromString(string str){
             if (str.Equals("SL")) { return Messwert.Sensor.sensorL; }
