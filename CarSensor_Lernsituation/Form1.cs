@@ -271,12 +271,12 @@ namespace CarSensor_Lernsituation {
             speed = double.Parse(parts[2]);
             sens1 = sensorFromString(parts[3]);
             distance1 = double.Parse(parts[4]);
-            if (parts.Length > 5 && parts.Length <= 6) {
+            if (parts.Length == 6) {
                 sens2 = sensorFromString(parts[5]);
                 distance2 = double.Parse(parts[6]);
                 lineMesswert = new Messwert(time, speed, sens1, distance1, sens2, distance2);
                 Debug.WriteLine("M2");
-            } else if (parts.Length > 7) {
+            } else if (parts.Length == 8) {
                 sens2 = sensorFromString(parts[5]);
                 distance2 = double.Parse(parts[6]);
                 sens3 = sensorFromString(parts[7]);
