@@ -50,7 +50,7 @@ namespace CarSensor_Lernsituation {
             this.refreshButton = new System.Windows.Forms.Button();
             this.KillerBtn = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.label1 = new System.Windows.Forms.Label();
+            this.Table = new System.Windows.Forms.Label();
             this.MeasurmentList = new System.Windows.Forms.DataGridView();
             this.chartPie = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
@@ -252,25 +252,25 @@ namespace CarSensor_Lernsituation {
             // 
             // panel1
             // 
-            this.panel1.Controls.Add(this.label1);
+            this.panel1.Controls.Add(this.Table);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(756, 57);
             this.panel1.TabIndex = 6;
             // 
-            // label1
+            // Table
             // 
-            this.label1.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(294, 19);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(173, 25);
-            this.label1.TabIndex = 0;
-            this.label1.Tag = "Heading";
-            this.label1.Text = "Abstandsmesser";
-            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.Table.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.Table.AutoSize = true;
+            this.Table.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Table.Location = new System.Drawing.Point(294, 19);
+            this.Table.Name = "Table";
+            this.Table.Size = new System.Drawing.Size(173, 25);
+            this.Table.TabIndex = 0;
+            this.Table.Tag = "Heading";
+            this.Table.Text = "Abstandsmesser";
+            this.Table.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // MeasurmentList
             // 
@@ -393,7 +393,7 @@ namespace CarSensor_Lernsituation {
         private System.Windows.Forms.Label Label_Left;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
         private Panel panel1;
-        private Label label1;
+        private Label Table;
         private DataGridView MeasurmentList;
         private Button refreshButton;
         private BindingSource miniMesswertBindingSource;
