@@ -39,7 +39,7 @@ namespace CarSensor_Lernsituation {
             reloadTable();
             paintPieChart();
             paintLineChart();
-            populateDataTable();
+            //populateDataTable();
         }
         #endregion
 

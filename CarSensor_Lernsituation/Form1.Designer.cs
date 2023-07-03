@@ -35,6 +35,7 @@ namespace CarSensor_Lernsituation {
             System.Windows.Forms.DataVisualization.Charting.Legend legend2 = new System.Windows.Forms.DataVisualization.Charting.Legend();
             System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
             System.Windows.Forms.DataVisualization.Charting.Title title2 = new System.Windows.Forms.DataVisualization.Charting.Title();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Window));
             this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
             this.submitButton = new System.Windows.Forms.Button();
             this.Label_Speed = new System.Windows.Forms.Label();
@@ -47,13 +48,13 @@ namespace CarSensor_Lernsituation {
             this.input_right = new System.Windows.Forms.NumericUpDown();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.refreshButton = new System.Windows.Forms.Button();
+            this.KillerBtn = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
             this.MeasurmentList = new System.Windows.Forms.DataGridView();
             this.chartPie = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.chartLine = new System.Windows.Forms.DataVisualization.Charting.Chart();
-            this.button1 = new System.Windows.Forms.Button();
             this.miniMesswertBindingSource = new System.Windows.Forms.BindingSource(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.SpeedBox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.input_left)).BeginInit();
@@ -215,7 +216,7 @@ namespace CarSensor_Lernsituation {
             this.tableLayoutPanel2.Controls.Add(this.SpeedBox, 2, 0);
             this.tableLayoutPanel2.Controls.Add(this.submitButton, 3, 0);
             this.tableLayoutPanel2.Controls.Add(this.refreshButton, 3, 2);
-            this.tableLayoutPanel2.Controls.Add(this.button1, 0, 2);
+            this.tableLayoutPanel2.Controls.Add(this.KillerBtn, 0, 2);
             this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Top;
             this.tableLayoutPanel2.Location = new System.Drawing.Point(0, 57);
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
@@ -238,6 +239,16 @@ namespace CarSensor_Lernsituation {
             this.refreshButton.Text = "Refresh";
             this.refreshButton.UseVisualStyleBackColor = true;
             this.refreshButton.Click += new System.EventHandler(this.button2_Click);
+            // 
+            // KillerBtn
+            // 
+            this.KillerBtn.Location = new System.Drawing.Point(5, 69);
+            this.KillerBtn.Name = "KillerBtn";
+            this.KillerBtn.Size = new System.Drawing.Size(23, 23);
+            this.KillerBtn.TabIndex = 8;
+            this.KillerBtn.Text = "💀";
+            this.KillerBtn.UseVisualStyleBackColor = true;
+            this.KillerBtn.Click += new System.EventHandler(this.button1_Click_1);
             // 
             // panel1
             // 
@@ -336,16 +347,6 @@ namespace CarSensor_Lernsituation {
             title2.Text = "Abstand/Soll-Abstand nach Zeit\n(Wenn <0 zu wenig Abstand)";
             this.chartLine.Titles.Add(title2);
             // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(5, 69);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(23, 23);
-            this.button1.TabIndex = 8;
-            this.button1.Text = "💀";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click_1);
-            // 
             // miniMesswertBindingSource
             // 
             this.miniMesswertBindingSource.DataSource = typeof(MiniMesswert);
@@ -358,6 +359,7 @@ namespace CarSensor_Lernsituation {
             this.Controls.Add(this.tableLayoutPanel1);
             this.Controls.Add(this.tableLayoutPanel2);
             this.Controls.Add(this.panel1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Window";
             this.Text = "Abstandsmesser";
             ((System.ComponentModel.ISupportInitialize)(this.SpeedBox)).EndInit();
@@ -403,7 +405,7 @@ namespace CarSensor_Lernsituation {
         private DataGridViewTextBoxColumn sensorDataGridViewTextBoxColumn;
         private DataGridViewTextBoxColumn distanceDataGridViewTextBoxColumn;
         private DataGridViewTextBoxColumn enoughDistDataGridViewTextBoxColumn;
-        private Button button1;
+        private Button KillerBtn;
     }
 }
 
