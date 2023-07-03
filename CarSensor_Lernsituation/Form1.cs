@@ -203,6 +203,7 @@ namespace CarSensor_Lernsituation {
 
         private void reloadTable() {
             measuredData.Clear();
+            measureTable.Rows.Clear();
             ReadFile(filePath, MeasurmentList);
         }
         #endregion
@@ -241,6 +242,7 @@ namespace CarSensor_Lernsituation {
                     Messwert Mess = (messwertFromString(line));
                     MiniMesswert miniMess = new MiniMesswert(Mess);
                     measuredData.Add(miniMess);
+                    addToDataTable(miniMess);
                     Debug.WriteLine("MiniMess: " + miniMess.toString());
                     Debug.WriteLine("Mess: "+Mess.toString());
                     i++;
